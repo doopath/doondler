@@ -5,7 +5,7 @@ from modules.package_managers import get_pocket_manager
 from modules.config import Config
 from modules.help import show_help_list
 from modules.password_generator import gen_password
-from modules.version_info import get_version_info
+from modules.version_info import show_version_info
 from modules.synoptic import Synoptic
 
 from tests.test_mock import test1_mock, test2_mock
