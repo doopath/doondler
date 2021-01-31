@@ -22,19 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf4410ff-c64b-4624-817b-84bdc5bc3646" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/modules/.doondler_logs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/config_prototype.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/actions.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/actions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/package_managers.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/package_managers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/user.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/version_info.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/version_info.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/action_handler_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/action_handler_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/config_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/config_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/note_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/note_test.py" afterDir="false" />
-    </list>
+    <list default="true" id="cf4410ff-c64b-4624-817b-84bdc5bc3646" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -323,7 +311,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611688188081</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="config module refactoring">
+      <created>1612087851056</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1612087851056</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -352,6 +347,7 @@
     <MESSAGE value="Added a new install file - install_dependencies. It's located at the dist dir." />
     <MESSAGE value="readme changes; added a beta synoptic module" />
     <MESSAGE value="added a new module - synoptic; see more with -weather option" />
-    <option name="LAST_COMMIT_MESSAGE" value="added a new module - synoptic; see more with -weather option" />
+    <MESSAGE value="config module refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="config module refactoring" />
   </component>
 </project>
