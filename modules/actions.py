@@ -63,17 +63,17 @@ actions = {
         "option": "-i"
     },
     "-uninstall": {
-        "action": package_manager.install,
+        "action": package_manager.uninstall,
         "arguments": 1,
         "option": "-uninstall"
     },
     "--sys-update": {
-        "action": package_manager.install,
+        "action": package_manager.sys_update,
         "arguments": 0,
         "option": "--sys-update"
     },
     "-su": {
-        "action": package_manager.install,
+        "action": package_manager.sys_update,
         "arguments": 0,
         "option": "-su"
     },
