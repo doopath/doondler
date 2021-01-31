@@ -52,7 +52,7 @@ def make_test():
     remove_file(CONFIG_PATH)
     remove_file(LOGS_PATH)
 
-    os.system("python ../main.py --init")
+    os.system("python3 ../main.py --init")
 
     assert os.path.isfile(CONFIG_PATH), "Config file does not exists!"
     assert os.path.isfile(LOGS_PATH), "Log file does not exists! "\
@@ -76,7 +76,7 @@ def remake_test():
     """ Testing of the remake method. """
     print("\nTesting of the remake method...")
 
-    os.system("python ../main.py --reinit")
+    os.system("python3 ../main.py --reinit")
 
     assert os.path.isfile(CONFIG_PATH), "Config file does not exists!"
     assert os.path.isfile(LOGS_PATH), "Log file does not exists!"

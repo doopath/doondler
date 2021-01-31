@@ -1,7 +1,7 @@
 """ Available program commands. """
 from modules import yuigahama
 from modules.user import User
-from modules.package_managers import get_pocket_manager
+from modules.package_managers import get_package_manager
 from modules.config import Config
 from modules.help import show_help_list
 from modules.password_generator import gen_password
@@ -18,7 +18,7 @@ handlers = {
     "yuigahama": yuigahama.Handler
 }
 
-pocket_manager = get_pocket_manager(user.pocket_manager)()
+package_manager = get_package_manager(user.package_manager)()
 handler = handlers[user.handler](user)
 
 actions = {
@@ -53,27 +53,27 @@ actions = {
         "option": "-reinit"
     },
     "-install": {
-        "action": pocket_manager.install,
+        "action": package_manager.install,
         "arguments": 1,
         "option": "-install"
     },
     "-i": {
-        "action": pocket_manager.install,
+        "action": package_manager.install,
         "arguments": 1,
         "option": "-i"
     },
     "-uninstall": {
-        "action": pocket_manager.uninstall,
+        "action": package_manager.install,
         "arguments": 1,
         "option": "-uninstall"
     },
     "--sys-update": {
-        "action": pocket_manager.sys_update,
+        "action": package_manager.install,
         "arguments": 0,
         "option": "--sys-update"
     },
     "-su": {
-        "action": pocket_manager.sys_update,
+        "action": package_manager.install,
         "arguments": 0,
         "option": "-su"
     },

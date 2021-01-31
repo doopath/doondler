@@ -9,7 +9,7 @@ from modules.logger import Logger
 logger = Logger()
 
 
-class PocketManager:
+class PackageManager:
     """
         An abstract class of system pocket manager.
 
@@ -27,7 +27,7 @@ class PocketManager:
         sys_update()
             Update system and packages.
     """
-    name = "PocketManager"
+    name = "PackageManager"
 
     def install(self, program: str):
         """ Install program. """
@@ -39,7 +39,7 @@ class PocketManager:
         """ Update system and packages. """
 
 
-class Pacman(PocketManager):
+class Pacman(PackageManager):
     """
         A class of Pacman.
         Pacman is a default arch-based package manager.
@@ -68,7 +68,7 @@ class Pacman(PocketManager):
         os.system("sudo pacman -Suy")
 
 
-class Apt(PocketManager):
+class Apt(PackageManager):
     name = "apt"
 
     def install(self, program: str):
@@ -81,7 +81,7 @@ class Apt(PocketManager):
         os.system("sudo apt-get update && sudo apt-get upgrade")
 
 
-class Dnf(PocketManager):
+class Dnf(PackageManager):
     name = "dnf"
 
     def install(self, program: str):
@@ -98,7 +98,7 @@ class Dnf(PocketManager):
         exit()
 
 
-class Yay(PocketManager):
+class Yay(PackageManager):
     name = "yay"
 
     def install(self, program: str):
@@ -121,7 +121,7 @@ class Yay(PocketManager):
         os.system("sudo yay -Suy")
 
 
-class Yaourt(PocketManager):
+class Yaourt(PackageManager):
     name = "yaourt"
 
     def install(self, program: str):
@@ -160,13 +160,13 @@ def get_couples():
     }
 
 
-def get_pocket_manager(manager_name: str):
+def get_package_manager(manager_name: str):
     """ Create a pocket manager. """
     try:
         managers = get_managers()
         pocket_manager = managers[manager_name]
 
-        assert manager_name in managers, f"Pocket manager with name: {manager_name} doesn't exits!"
+        assert manager_name in managers, f"Package manager with name: {manager_name} doesn't exits!"
 
         return pocket_manager
 

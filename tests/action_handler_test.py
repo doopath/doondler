@@ -9,6 +9,7 @@ from modules.action_handler import *
 
 mock_system_args = ["action_handler_test.py", "-test1", "Michael", "--test2"]
 
+
 def reduce_test():
     """ Testing of the reduce method. """
     action_handler = ActionHandler(mock_system_args)

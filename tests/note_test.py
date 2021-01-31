@@ -31,7 +31,6 @@ def check_if_file_exists(path: str):
     return os.path.isfile(path)
 
 
-
 def check_note_size():
     """ Check if created note is correct and has right size. """
     note = open(NOTE_PATH)

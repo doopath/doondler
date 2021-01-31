@@ -1,9 +1,24 @@
 """ A module which show some information about build and version. """
 
+# build_number: TYPE-DATE-DAILY_UPDATE
+
+# Build types:
+#   UCB - Unstable Changes Build
+#   UFB - Unstable Full Build
+#   SCB - Stable Changes Build
+#   SFB - Stable Full Build
+
+# Dates example: DAY-MONTH-YEAR:
+#   31st of January 2021 - 31012021
+
+# Daily update example: NUMBER of updates count
+#   Sometimes you can make a few updates per one day so it shows how many updates you've made.
+#   First - 00; Second - 01; etc.
+
 
 info = {
-    "build_number": "UCB-29012021-00",
-    "version": "0.4.3",
+    "build_number": "UCB-31012021-00",
+    "version": "0.4.4",
     "kernel": "linux 5.4.0-64-generic",
     "platform": "AMD Ryzen 3600U",
     "os": "Ubuntu-20.04"

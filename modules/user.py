@@ -29,7 +29,7 @@ class User:
         self.city = ""
         self.home_dir = ""
         self.handler = ""
-        self.pocket_manager = ""
+        self.package_manager = ""
 
     def change_par(self, par_name, new_par):
         """ Change user's parameter """
@@ -41,11 +41,11 @@ class User:
             check_if_config_exists()
 
             user_ = config_reader.read()
-            self.username = user_["name"]
+            self.username = user_["username"]
             self.city = user_["city"]
             self.home_dir = user_["home_dir"]
             self.handler = user_["handler"]
-            self.pocket_manager = user_["pocket_manager"]
+            self.package_manager = user_["package_manager"]
             self.__dict__ = user_
 
         except InitializationError as error:
