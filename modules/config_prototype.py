@@ -57,19 +57,20 @@ class ConfigPrototype:
         self.city = {
             "value": "",
             "main_question": f"Do you want to change your home dir or keep default={self.default['city']}?",
-            "confirm_question": "Ok, then enter a path",
+            "confirm_question": "Ok, so enter your city like <los-angeles> or <nizhniy-novgorod>",
             "default": self.default["city"]
         }
         self.handler = {
             "value": "",
             "main_question": f"Do you want to change your home dir or keep default={self.default['handler'].name}?",
-            "confirm_question": "Ok, then enter a path",
+            "confirm_question": "Ok, then enter a handler's name",
             "default": self.default["handler"].name
         }
         self.package_manager = {
             "value": "",
             "main_question": f"Do you want to change your package manager or keep default={self.default['package_manager']}?",
-            "confirm_question": "Ok, then enter a path",
+            "confirm_question": "Ok, then enter your package manager",
             "default": self.default["package_manager"]
         }
         del self.__dict__["default"]
+

@@ -8,34 +8,25 @@ from modules.errors import InitializationError
 from modules.paths import get_path
 from modules import yuigahama
 
-handlers = [yuigahama.Handler]
+handlers = {
+    "yuigahama": yuigahama.Handler
+}
 logger = Logger(".doondler_logs")
 
 
-def get_handlers():
-    """ Get list of handlers to show it to user. """
-    if len(handlers) < 2:
-        return False
-
-    res = ""
-    i = 0
-
-    while i < len(handlers):
-        res += f"{i + 1} = {handlers[i].name}\n"
-        i += 1
-
-    return res
-
-
-def get_handler(id: int):
+def take_handler(current_handler):
+    """ Ask user what he wants use as a handler and return it if exists. """
     try:
-        assert len(handlers) - 1 >= id, f"Handler with id={id} doesn't exists!"
+        desired_handler = ask_param(current_handler)
+        assert desired_handler in handlers.keys(), f"Handler with name {desired_handler} doesn't exists!"
 
-        return handlers[id]
+        return desired_handler
 
     except AssertionError as error:
         logger.log(error)
-        exit()
+        logger.log(f"The default handler set as current ({current_handler['default']})")
+
+        return current_handler["default"]
 
 
 def param_is_valid(param: str):
@@ -105,26 +96,8 @@ class Config:
         self.prototype.username["value"] = ask_param(self.prototype.username)
         self.prototype.home_dir["value"] = ask_param(self.prototype.home_dir)
         self.prototype.city["value"] = ask_param(self.prototype.city)
-        self.prototype.handler["value"] = ask_param(self.prototype.handler)
+        self.prototype.handler["value"] = take_handler(self.prototype.handler)
         self.prototype.package_manager["value"] = ask_param(self.prototype.package_manager)
-
-    # def _set_handler(self):
-    #     handlers_choice = get_handlers()
-    #
-    #     if handlers_choice:
-    #         handlers_choice = "\n" + handlers_choice + "\nOk, then select one of these (default=1)"
-    #
-    #     handler_id = ask_param(
-    #         f"Do you want to change you daemon-handler or keep default={self.handler.name}?",
-    #         handlers_choice or "Sorry, but now only one handler can help you.",
-    #         1,
-    #         skip=not bool(handlers_choice)
-    #     ) or 0
-    #
-    #     if handler_id:
-    #         handler_id = int(handler_id) - 1
-    #
-    #     self.handler = get_handler(handler_id)
 
     def _create_doondlerc(self):
         try:
@@ -246,3 +219,7 @@ class Config:
         else:
             print("Goodbye! But, anyway, try to init later! 🖐")
             exit()
+
+
+if __name__ == "__main__":
+    Config().make()
