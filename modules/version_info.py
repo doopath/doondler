@@ -17,8 +17,8 @@
 
 
 info = {
-    "build_number": "UCB-03022021-02",
-    "version": "0.4.91",
+    "build_number": "UCB-03022021-03",
+    "version": "0.4.92",
     "kernel": "linux 5.4.0-64-generic",
     "platform": "AMD Ryzen 3600U",
     "os": "Ubuntu-20.04"

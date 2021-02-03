@@ -23,9 +23,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf4410ff-c64b-4624-817b-84bdc5bc3646" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tests/config_prototype_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_all.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_all.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/doondler" beforeDir="false" afterPath="$PROJECT_DIR$/dist/doondler" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/version_info.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/version_info.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -336,7 +336,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612380785761</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="added a config prototype test">
+      <created>1612381964539</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1612381964539</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -368,6 +375,7 @@
     <MESSAGE value="config module refactoring" />
     <MESSAGE value="added a performance handler module; see --performance-boost option" />
     <MESSAGE value="bug fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fixes" />
+    <MESSAGE value="added a config prototype test" />
+    <option name="LAST_COMMIT_MESSAGE" value="added a config prototype test" />
   </component>
 </project>
