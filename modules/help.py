@@ -13,6 +13,8 @@ ACTIONS_LIST = """
                --gen-password <prefix> <length>: Generate unique random password
                -gp <prefix> <length>: A short version of --gen-password
                -weather: Get a current weather info: temperature, humidity, pressure etc
+               --performance-boost: Set performance CPU mode
+               --performance-powersave: Set powersave CPU mode
                \n
                """
 

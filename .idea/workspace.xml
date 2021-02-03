@@ -22,7 +22,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf4410ff-c64b-4624-817b-84bdc5bc3646" name="Default Changelist" comment="" />
+    <list default="true" id="cf4410ff-c64b-4624-817b-84bdc5bc3646" name="Default Changelist" comment="added a performance handler module; see --performance-boost option">
+      <change afterPath="$PROJECT_DIR$/modules/performance_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/doondler" beforeDir="false" afterPath="$PROJECT_DIR$/dist/doondler" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/actions.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/actions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/help.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/help.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/version_info.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/version_info.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -66,7 +73,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
-  <component name="RunManager" selected="Python.test_all">
+  <component name="RunManager" selected="Python.performance_handler">
     <configuration name="config" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="doondler" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -130,7 +137,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="password_generator" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="performance_handler" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="doondler" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -142,7 +149,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/modules/password_generator.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/modules/performance_handler.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -195,19 +202,19 @@
     </configuration>
     <list>
       <item itemvalue="Python.init" />
-      <item itemvalue="Python.password_generator" />
-      <item itemvalue="Python.test_all" />
-      <item itemvalue="Python.synoptic" />
-      <item itemvalue="Python.config_prototype" />
       <item itemvalue="Python.config" />
+      <item itemvalue="Python.config_prototype" />
+      <item itemvalue="Python.synoptic" />
+      <item itemvalue="Python.test_all" />
+      <item itemvalue="Python.performance_handler" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.performance_handler" />
         <item itemvalue="Python.test_all" />
         <item itemvalue="Python.config" />
         <item itemvalue="Python.config_prototype" />
         <item itemvalue="Python.synoptic" />
-        <item itemvalue="Python.password_generator" />
       </list>
     </recent_temporary>
   </component>

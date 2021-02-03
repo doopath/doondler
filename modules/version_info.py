@@ -17,12 +17,13 @@
 
 
 info = {
-    "build_number": "UCB-01022021-00",
-    "version": "0.4.7",
+    "build_number": "UCB-03022021-01",
+    "version": "0.4.9",
     "kernel": "linux 5.4.0-64-generic",
     "platform": "AMD Ryzen 3600U",
     "os": "Ubuntu-20.04"
 }
+
 
 def show_version_info():
     """ Show information about doondler. """

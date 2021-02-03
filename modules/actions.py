@@ -7,6 +7,7 @@ from modules.help import show_help_list
 from modules.password_generator import gen_password
 from modules.version_info import show_version_info
 from modules.synoptic import Synoptic
+from modules.performance_handler import PerformanceHandler
 
 from tests.test_mock import test1_mock, test2_mock
 
@@ -91,5 +92,15 @@ actions = {
         "action": Synoptic().get_weather,
         "arguments": 0,
         "option": "-weather"
+    },
+    "--performance-boost": {
+        "action": PerformanceHandler().boost(),
+        "arguments": 0,
+        "option": "--performance-boost"
+    },
+    "--performance-powersave": {
+        "action": PerformanceHandler().powersave(),
+        "arguments": 0,
+        "option": "--performance-powersave"
     }
 }
