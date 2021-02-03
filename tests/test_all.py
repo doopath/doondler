@@ -9,6 +9,7 @@ from tests import config_writer_test
 from tests import config_reader_test
 from tests import note_test
 from tests import yuigahama_test
+from tests import config_prototype_test
 
 
 # Put main functions of  your tests here.
@@ -20,7 +21,8 @@ def get_all_tests():
         "ActionHandler": action_handler_test.main,
         "ConfigWriter": config_writer_test.main,
         "ConfigReader": config_reader_test.main,
-        "YuigahamaHandler": yuigahama_test.main
+        "YuigahamaHandler": yuigahama_test.main,
+        "ConfigPrototype": config_prototype_test.main,
     }
 
 

@@ -23,9 +23,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf4410ff-c64b-4624-817b-84bdc5bc3646" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/tests/config_prototype_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/actions.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/actions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/version_info.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/version_info.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_all.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_all.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +70,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
-  <component name="RunManager" selected="Python.performance_handler">
+  <component name="RunManager" selected="Python.test_all">
     <configuration name="config" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="doondler" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -105,6 +105,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/modules/config_prototype.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="config_prototype_test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="doondler" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/config_prototype_test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -155,27 +176,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="synoptic" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="doondler" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/modules" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/modules/synoptic.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="test_all" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="doondler" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -201,17 +201,17 @@
       <item itemvalue="Python.init" />
       <item itemvalue="Python.config" />
       <item itemvalue="Python.config_prototype" />
-      <item itemvalue="Python.synoptic" />
       <item itemvalue="Python.test_all" />
       <item itemvalue="Python.performance_handler" />
+      <item itemvalue="Python.config_prototype_test" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.performance_handler" />
         <item itemvalue="Python.test_all" />
+        <item itemvalue="Python.config_prototype_test" />
+        <item itemvalue="Python.performance_handler" />
         <item itemvalue="Python.config" />
         <item itemvalue="Python.config_prototype" />
-        <item itemvalue="Python.synoptic" />
       </list>
     </recent_temporary>
   </component>
@@ -329,7 +329,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612380578362</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="bug fixes">
+      <created>1612380785761</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1612380785761</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -360,6 +367,7 @@
     <MESSAGE value="added a new module - synoptic; see more with -weather option" />
     <MESSAGE value="config module refactoring" />
     <MESSAGE value="added a performance handler module; see --performance-boost option" />
-    <option name="LAST_COMMIT_MESSAGE" value="added a performance handler module; see --performance-boost option" />
+    <MESSAGE value="bug fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug fixes" />
   </component>
 </project>
