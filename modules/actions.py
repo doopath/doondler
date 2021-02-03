@@ -94,12 +94,12 @@ actions = {
         "option": "-weather"
     },
     "--performance-boost": {
-        "action": PerformanceHandler().boost(),
+        "action": PerformanceHandler().boost,
         "arguments": 0,
         "option": "--performance-boost"
     },
     "--performance-powersave": {
-        "action": PerformanceHandler().powersave(),
+        "action": PerformanceHandler().powersave,
         "arguments": 0,
         "option": "--performance-powersave"
     }
