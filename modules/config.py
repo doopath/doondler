@@ -171,8 +171,6 @@ class Config:
 
         options = input('Please, take a few options like <cnh, snc, snn>: ')
         options = options.strip().strip("<").strip(">")
-        options = options.split(",")
-
         self._reassign_params(options)
         self._create_user()
         self._create_doondlerc()
@@ -223,3 +221,4 @@ class Config:
 
 if __name__ == "__main__":
     Config().make()
+

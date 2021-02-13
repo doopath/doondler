@@ -28,7 +28,7 @@ info = {
 def show_version_info():
     """ Show information about doondler. """
     print("Doondler is a linux system handler by doopath")
-    print("Developed in 2020. Russia. Nizhniy Novgorod.")
+    print("Developed in 2020. Russia. Nizhny Novgorod.")
     print(f"Current version: {info['version']} | Current build number: {info['build_number']}")
     print(f"Was built on {info['os']} & {info['kernel']} {info['platform']}.")
 
