@@ -34,3 +34,13 @@ def to_red(string: str):
 def to_yellow(string: str):
     """ Make a green string from initial string. """
     return f"{yellow}{string}{no_color}"
+
+
+def to_white(string: str):
+    """ Make a white string from initial string. """
+    return f"{white}{string}{no_color}"
+
+
+def to_cyan(string: str):
+    """ Make a cyan string from initial string. """
+    return f"{cyan}{string}{no_color}"

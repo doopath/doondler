@@ -2,6 +2,10 @@
 from modules.logger import Logger
 from modules.sea_battle.errors import HitError
 
+from modules.colors import to_red
+from modules.colors import to_yellow
+from modules.colors import to_white
+from modules.colors import to_cyan
 
 logger = Logger()
 
@@ -12,6 +16,16 @@ class Field:
         self.is_busy = False
         self.is_blown_up = False
         self.ship = None
+        self.marker = None
+        self._set_marker()
+
+    def _set_marker(self):
+        if self.is_blown_up and self.is_busy:
+            self.marker = to_red("x")
+        elif self.is_blown_up and not self.is_busy:
+            self.marker = to_yellow("#")
+        if not self.is_blown_up:
+            self.marker = to_white("=")
 
     def hit(self):
         """ Destroy a ship that is located at this field."""
@@ -40,7 +54,9 @@ class Field:
     def destruct(self):
         print(f"The {self.index} field was blown up.")
         self.is_blown_up = True
+        self._set_marker()
 
     def locate(self, ship):
         self.ship = ship
         self.is_busy = True
+        self._set_marker()

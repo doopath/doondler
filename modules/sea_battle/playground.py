@@ -1,7 +1,9 @@
 """ A module of a playground. """
 import string
 from sys import exit
+
 from modules.logger import Logger
+
 from modules.sea_battle.field import Field
 from modules.sea_battle.ship import Ship
 from modules.sea_battle.errors import FillingError
@@ -13,8 +15,8 @@ logger = Logger()
 class Playground:
     def __init__(self):
         self.fields_list = {}
-        self.columns_count = 10
-        self.rows_count = 10
+        self.columns_count = 9
+        self.rows_count = 9
 
     def _make_row(self, letter: str):
         self.fields_list[letter.upper()] = [Field(letter.upper()+str(i)) for i in range(1, self.columns_count+1)]
@@ -22,6 +24,9 @@ class Playground:
     def create(self):
         for i in range(self.rows_count):
             self._make_row(string.ascii_lowercase[i])
+
+    def overwrite(self, pos: tuple, target: Field):
+        self.fields_list[pos[0]][pos[1]] = target
 
     def _are_valid_fields(self, ship: Ship):
         fields = ship.fields
@@ -47,7 +52,21 @@ class Playground:
     def blow_up(self, index):
         return self.fields_list[index.upper()[:1]][int(index[1:])-1].hit()
 
+    def format(self):
+        letters = string.ascii_uppercase
+
+        for letter in self.fields_list.keys():
+            for i in range(len(self.fields_list[letter])):
+                target_letter = letters[i]
+
+                buffer = self.fields_list[letter][i]
+                target = self.fields_list[target_letter][letters.index(letter)]
+
+                self.overwrite((buffer.index[0], int(buffer.index[1])-1), target)
+                self.overwrite((target.index[0], int(target.index[1])-1), buffer)
+
 
 if __name__ == "__main__":
     pg = Playground()
     pg.create()
+
