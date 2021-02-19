@@ -21,6 +21,11 @@ class Ship:
         self.fields = fields
         self.is_destroyed = False
 
+    def unset(self):
+        [field.clear() for field in self.fields]
+        self.fields = []
+        self.is_destroyed = False
+
     def destroy(self):
         self.is_destroyed = True
         print(f"The ship at {'(' + '; '.join([f.index for f in self.fields]) + ')'} was destroyed.")

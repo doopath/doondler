@@ -27,6 +27,12 @@ class Field:
         if not self.is_blown_up:
             self.marker = to_white("=")
 
+    def clear(self):
+        self.ship = None
+        self.is_blown_up = False
+        self.is_busy = False
+        self._set_marker()
+
     def hit(self):
         """ Destroy a ship that is located at this field."""
         try:

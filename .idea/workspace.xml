@@ -23,11 +23,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf4410ff-c64b-4624-817b-84bdc5bc3646" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/modules/sea_battle/server.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/colors.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/colors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/cacher.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/cacher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/sea_battle/errors.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/sea_battle/errors.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/sea_battle/field.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/sea_battle/field.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/sea_battle/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/sea_battle/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/sea_battle/playground.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/sea_battle/playground.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/sea_battle/ship.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/sea_battle/ship.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
