@@ -8,10 +8,12 @@ pg.create()
 
 fields_list = [
     [pg.fields_list["A"][0], pg.fields_list["B"][0], pg.fields_list["C"][0]],
-    [pg.fields_list["A"][1], pg.fields_list["B"][1], pg.fields_list["C"][1]],
+    [pg.fields_list["A"][1], pg.fields_list["B"][1], pg.fields_list["C"][1]],   # Incorrect
     [pg.fields_list["E"][0], pg.fields_list["F"][0], pg.fields_list["G"][0]],
     [pg.fields_list["C"][4], pg.fields_list["D"][4], pg.fields_list["E"][4]],
+    [pg.fields_list["C"][7], pg.fields_list["D"][7], pg.fields_list["E"][7]],
     [pg.fields_list["I"][6], pg.fields_list["I"][7]],
+    [pg.fields_list["B"][5], pg.fields_list["B"][6]],  # Incorrect
     [pg.fields_list["G"][4], pg.fields_list["H"][4]]
 ]
 

@@ -22,15 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf4410ff-c64b-4624-817b-84bdc5bc3646" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/cacher.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/cacher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/sea_battle/errors.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/sea_battle/errors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/sea_battle/field.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/sea_battle/field.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/sea_battle/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/sea_battle/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/sea_battle/playground.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/sea_battle/playground.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/sea_battle/ship.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/sea_battle/ship.py" afterDir="false" />
-    </list>
+    <list default="true" id="cf4410ff-c64b-4624-817b-84bdc5bc3646" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -361,7 +353,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613239754321</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="added a validation of the playground">
+      <created>1613737888738</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1613737888738</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -395,6 +394,7 @@
     <MESSAGE value="added a config prototype test" />
     <MESSAGE value="bug fixes" />
     <MESSAGE value="Added the beta of sea_battle game. Now it does not work but some files were written. It cannot be executed from the entry point so the binary wasn't updated." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added the beta of sea_battle game. Now it does not work but some files were written. It cannot be executed from the entry point so the binary wasn't updated." />
+    <MESSAGE value="added a validation of the playground" />
+    <option name="LAST_COMMIT_MESSAGE" value="added a validation of the playground" />
   </component>
 </project>

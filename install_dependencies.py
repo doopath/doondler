@@ -1,6 +1,4 @@
 #! /usr/bin/python3
-import os
-import distro
 from modules.package_managers import DefaultManager
 
 
