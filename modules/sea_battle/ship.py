@@ -22,7 +22,7 @@ class Ship:
         self.is_destroyed = False
 
     def unset(self):
-        [field.clear() for field in self.fields]
+        [field.clean() for field in self.fields]
         self.fields = []
         self.is_destroyed = False
 

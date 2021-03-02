@@ -1,15 +1,6 @@
 """ Main script handling any commands """
 import sys
-from modules.config import Config
-
-
-# If the init flag was gotten then make configuration file and exit.
-if "--init" in sys.argv:
-    Config().make()
-
-
-def nothing():
-    pass
+from modules.action_handler import ActionHandler
 
 
 # If the flags weren't gotten
@@ -18,10 +9,6 @@ if len(sys.argv) < 2:
     sys.exit()
 
 
-from modules.action_handler import ActionHandler
-
-action_handler = ActionHandler(sys.argv)
-
 if __name__ == "__main__":
+    action_handler = ActionHandler(sys.argv)
     action_handler.reduce()
-

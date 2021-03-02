@@ -2,7 +2,6 @@
 import string
 
 from sys import exit
-from time import sleep
 
 from modules.logger import Logger
 
@@ -72,6 +71,7 @@ class Playground:
                 self.fields_list[field.index.upper()[:1]][int(field.index[1:])-1].locate(ship)
 
             self.validator.validate(ship)
+        exit()
 
     def blow_up(self, index: str):
         """ Blow up some ship and index=index. """
@@ -162,6 +162,7 @@ class PlaygroundValidator:
                     raise PlaygroundValidationError(f"The ship at fields {[f.index for f in fields]} is incorrect!")
 
             fields_to_check = []
+
             if len(fields) > 1:
                 direction_type = get_direction_type()
 
@@ -175,6 +176,7 @@ class PlaygroundValidator:
 
             for i in range(len(self._fields_to_check)):
                 field = self._fields_to_check.pop(0)
+
                 if field.is_busy:
                     raise PlaygroundValidationError(f"The ship at fields {[f.index for f in fields]} is incorrect!")
 
@@ -233,7 +235,6 @@ class DirectionValidator:
         if position == "next": index = 1
         elif position == "prev": index = -1
 
-        print(self._c_letters.index(current_letter))
         return self._c_letters[self._c_letters.index(current_letter) + index]
 
     def _pick_letter(self, field: Field):

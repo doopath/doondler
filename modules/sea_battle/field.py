@@ -1,16 +1,44 @@
 """ A module of a playground field."""
 from modules.logger import Logger
-from modules.sea_battle.errors import HitError
+from modules.sea_battle.errors import HittingError
 
 from modules.colors import to_red
 from modules.colors import to_yellow
 from modules.colors import to_white
-from modules.colors import to_cyan
 
 logger = Logger()
 
 
 class Field:
+    """
+    A class of a playground field.
+    It's a piece of the playground and can be blown up,
+    busy by a ship and has an index like 'A1'.
+
+    Attributes
+    ----------
+    index: str
+        An index 'A1' format. Contains a letter and a digit; it's a coordinate of a ship.
+    is_busy: bool (False by default)
+        A marker that shows if the field is busy or not.
+    is_blown_up: bool (False by default)
+        A marker that shows if the field is busy or not.
+    ship: Ship (None by default)
+        A ship that located on this field (if it was located).
+    marker: string (None by default)
+        A marker of the field; It has a color and unique marker like "x", "=" or "#".
+
+    Methods
+    -------
+    clean(): void
+        Clean a field and update current marker.
+    hit(): str or void
+        Destruct this field and destroy a ship located on this place.
+        If it's already blown up then raise an error.
+    locate(ship: Ship): void
+        Set a ship on this field.
+    """
+
     def __init__(self, index: str):
         self.index = index
         self.is_busy = False
@@ -27,7 +55,12 @@ class Field:
         if not self.is_blown_up:
             self.marker = to_white("=")
 
-    def clear(self):
+    def _destruct(self):
+        print(f"The {self.index} field was blown up.")
+        self.is_blown_up = True
+        self._set_marker()
+
+    def clean(self):
         self.ship = None
         self.is_blown_up = False
         self.is_busy = False
@@ -37,7 +70,7 @@ class Field:
         """ Destroy a ship that is located at this field."""
         try:
             if not self.is_blown_up and self.is_busy:
-                self.destruct()
+                self._destruct()
 
                 if False not in [f.is_blown_up for f in self.ship.fields]:
                     self.ship.destroy()
@@ -47,20 +80,15 @@ class Field:
                     return "Some ship at this field was damaged!"
 
             elif not self.ship and not self.is_blown_up:
-                self.destruct()
+                self._destruct()
 
                 return "This is an empty field!"
 
             elif self.is_blown_up:
-                raise HitError("The field was already blown up!")
+                raise HittingError("The field was already blown up!")
 
-        except HitError as error:
+        except HittingError as error:
             logger.log(error)
-
-    def destruct(self):
-        print(f"The {self.index} field was blown up.")
-        self.is_blown_up = True
-        self._set_marker()
 
     def locate(self, ship):
         self.ship = ship

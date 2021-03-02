@@ -1,5 +1,6 @@
 #! /usr/bin/python3
 """ Build script for doondler sources """
+
 import os
 import sys
 import shutil

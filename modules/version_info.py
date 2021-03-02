@@ -17,8 +17,8 @@
 
 
 info = {
-    "build_number": "UCB-03022021-03",
-    "version": "0.4.92",
+    "build_number": "UCB-02032021-00",
+    "version": "0.4.94",
     "kernel": "linux 5.4.0-64-generic",
     "platform": "AMD Ryzen 3600U",
     "os": "Ubuntu-20.04"
@@ -31,4 +31,3 @@ def show_version_info():
     print("Developed in 2020. Russia. Nizhny Novgorod.")
     print(f"Current version: {info['version']} | Current build number: {info['build_number']}")
     print(f"Was built on {info['os']} & {info['kernel']} {info['platform']}.")
-

@@ -32,11 +32,11 @@ git checkout to-build
 git pull
 
 # Install python using your package manager
-sudo pacman -S python python2.7 pip
+sudo pacman -S python3 python2.7 pip
 
 # Python dependencies
-pip install pyinstaller
-pip install -r requirements.txt
+pip3 install pyinstaller
+pip3 install -r requirements.txt
 
 # If your pyinstaller start looks like
 # "pyinstaller: command not found"

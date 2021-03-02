@@ -1,7 +1,7 @@
 """ A module that contains any errors using in sea_battle module. """
 
 
-class HitError(Exception):
+class HittingError(Exception):
     """
         Error of hitting.
         It occurs if you hit a field that was already blown up.

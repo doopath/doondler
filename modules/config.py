@@ -182,7 +182,6 @@ class Config:
         """ Make a config file (~/.doondlerc). """
         if remake:
             self._reinit()
-            exit()
 
         print(f"Hello, {self.prototype.username['default']}!")
 
@@ -217,8 +216,3 @@ class Config:
         else:
             print("Goodbye! But, anyway, try to init later! 🖐")
             exit()
-
-
-if __name__ == "__main__":
-    Config().make()
-

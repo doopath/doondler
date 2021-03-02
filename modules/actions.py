@@ -23,6 +23,11 @@ package_manager = get_package_manager(user.package_manager)()
 handler = handlers[user.handler](user)
 
 actions = {
+    "--init": {
+        "action": Config().make,
+        "arguments": 0,
+        "option": "--init"
+    },
     "--help": {
         "action": show_help_list,
         "arguments": 0,
