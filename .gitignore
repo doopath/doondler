@@ -2,6 +2,6 @@ __pycache__
 modules/__pycache__
 tests/__pycache__
 venv
-venv/*
-
+dist
+.idea
 todos.txt

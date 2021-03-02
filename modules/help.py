@@ -1,6 +1,8 @@
 """ View help list if parameters weren't given or gotten something incorrect. """
 
 ACTIONS_LIST = """
+               --version: show a version information
+               --help: show help list of available parameters
                --init:  Initialize or reinitialize your local config
                --make-note <message> <deadline>s/m/h:  Make a notification with a deadline
                --help: Show help message
