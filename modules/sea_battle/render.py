@@ -1,5 +1,4 @@
 """ A module that renders the playground and other things. """
-import string
 from os import system
 from time import sleep
 from modules.sea_battle.playground import Playground
@@ -112,14 +111,18 @@ class RenderHandler:
 
 if __name__ == "__main__":
     rh = RenderHandler(pg)
-    checkbox = Checkbox()
-    checkbox.turn_on()
-    thread = Thread(target=lambda: rh.stream(checkbox))
-    thread.start()
+    rh.render()
+    sleep(1)
+    pg.blow_up(pg.fields_list["C"][0].index)
+    rh.render()
 
-    sleep(3)
+    # checkbox = Checkbox()
+    # checkbox.turn_on()
+    # thread = Thread(target=lambda: rh.render())
+    # thread.start()
+    # sleep(3)
 
-    for letter in pg.fields_list:
-        for field in pg.fields_list[letter]:
-            pg.blow_up(field.index)
-            sleep(0.25)
+    # for letter in pg.fields_list:
+    #     for field in pg.fields_list[letter]:
+    #         pg.blow_up(field.index)
+    #         sleep(0.25)

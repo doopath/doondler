@@ -22,7 +22,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf4410ff-c64b-4624-817b-84bdc5bc3646" name="Default Changelist" comment="" />
+    <list default="true" id="cf4410ff-c64b-4624-817b-84bdc5bc3646" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/sea_battle/field.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/sea_battle/field.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/sea_battle/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/sea_battle/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/sea_battle/playground.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/sea_battle/playground.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/sea_battle/render.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/sea_battle/render.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/version_info.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/version_info.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,10 +70,31 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/main.py" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
-  <component name="RunManager" selected="Python.render">
+  <component name="RunManager" selected="Python.batya">
+    <configuration name="batya" type="PythonConfigurationType" factoryName="Python">
+      <module name="doondler" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="/usr/bin/python3.9" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="init" type="PythonConfigurationType" factoryName="Python">
       <module name="doondler" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -195,11 +223,12 @@
     </configuration>
     <list>
       <item itemvalue="Python.init" />
-      <item itemvalue="Python.test_all" />
+      <item itemvalue="Python.batya" />
       <item itemvalue="Python.main" />
       <item itemvalue="Python.playground" />
-      <item itemvalue="Python.server" />
       <item itemvalue="Python.render" />
+      <item itemvalue="Python.server" />
+      <item itemvalue="Python.test_all" />
     </list>
     <recent_temporary>
       <list>
@@ -360,7 +389,28 @@
       <option name="project" value="LOCAL" />
       <updated>1613737888738</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="bug fixes; added some new features for sea_battle module">
+      <created>1614698832484</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1614698832484</updated>
+    </task>
+    <task id="LOCAL-00022" summary="bug fixes; added some new features for sea_battle module">
+      <created>1614698925370</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1614698925370</updated>
+    </task>
+    <task id="LOCAL-00023" summary="bug fixes; added new options to the help list">
+      <created>1614699563922</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1614699563922</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -395,6 +445,8 @@
     <MESSAGE value="bug fixes" />
     <MESSAGE value="Added the beta of sea_battle game. Now it does not work but some files were written. It cannot be executed from the entry point so the binary wasn't updated." />
     <MESSAGE value="added a validation of the playground" />
-    <option name="LAST_COMMIT_MESSAGE" value="added a validation of the playground" />
+    <MESSAGE value="bug fixes; added some new features for sea_battle module" />
+    <MESSAGE value="bug fixes; added new options to the help list" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug fixes; added new options to the help list" />
   </component>
 </project>

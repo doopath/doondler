@@ -11,7 +11,6 @@ from modules.sea_battle.ship import Ship
 from modules.sea_battle.errors import FillingError
 from modules.sea_battle.errors import PlaygroundValidationError
 
-
 logger = Logger()
 
 
@@ -26,9 +25,11 @@ class Playground:
     columns_count: int
         A count of columns: horizontal columns - digits.
     rows_count: int
-        A count of rows: vertical rown - letters.
+        A count of rows: vertical row - letters.
     validator: PlaygroundValidator
         A Validator with a method validate getting a ship and checking it.
+    is_hidden: bool
+        Access or deny to show playground fields.
 
     Methods
     -------
@@ -39,21 +40,26 @@ class Playground:
     overwrite(pos: tuple, target: Field): void
         Overwrite a field at position pos with the target field.
     blow_up(index: str): str
-        Blow up a field with indexl=index.
+        Blow up a field with index=index.
     validate(): void
         Validate current playground.
     format(): void
         Format current playground to playable form.
     """
 
-    def __init__(self):
+    def __init__(self, is_hidden=False):
         self.fields_list = {}
         self.columns_count = 9
         self.rows_count = 9
         self.validator = PlaygroundValidator(self)
+        self.is_hidden = is_hidden
 
     def _make_row(self, letter: str):
-        self.fields_list[letter.upper()] = [Field(letter.upper()+str(i)) for i in range(1, self.columns_count+1)]
+        self.fields_list[letter.upper()] = [Field(letter.upper() + str(i)) for i in range(1, self.columns_count + 1)]
+
+    def _hide_field(self, field: Field):
+        if self.is_hidden:
+            field.hide()
 
     def create(self):
         """ Create an empty playground. """
@@ -68,19 +74,20 @@ class Playground:
         """ Fill the playground with ships. """
         for ship in ships:
             for field in ship.fields:
-                self.fields_list[field.index.upper()[:1]][int(field.index[1:])-1].locate(ship)
+                self.fields_list[field.index.upper()[:1]][int(field.index[1:]) - 1].locate(ship)
+                self._hide_field(field)
 
             self.validator.validate(ship)
-        exit()
 
     def blow_up(self, index: str):
         """ Blow up some ship and index=index. """
-        return self.fields_list[index.upper()[0]][int(index[1:])-1].hit()
+        return self.fields_list[index.upper()[0]][int(index[1:]) - 1].hit()
 
     def validate(self):
         """ Validate the full playground. """
         ships = []
-        [[ships.append(item.ship) for item in sublist] for sublist in [couple[1] for couple in self.fields_list.items()]]
+        [[ships.append(item.ship) for item in sublist] for sublist in
+         [couple[1] for couple in self.fields_list.items()]]
         ships = filter(lambda ship: True if ship is not None else False, ships)
         [self.validator.validate(ship) for ship in ships]
 
@@ -99,8 +106,8 @@ class Playground:
                 buffer = self.fields_list[letter][i]
                 target = self.fields_list[target_letter][letters.index(letter)]
 
-                self.overwrite((buffer.index[0], int(buffer.index[1])-1), target)
-                self.overwrite((target.index[0], int(target.index[1])-1), buffer)
+                self.overwrite((buffer.index[0], int(buffer.index[1]) - 1), target)
+                self.overwrite((target.index[0], int(target.index[1]) - 1), buffer)
 
 
 class PlaygroundValidator:
@@ -135,7 +142,8 @@ class PlaygroundValidator:
             for i in range(len(fields) - 1):
                 if int(fields[i].index[1]) + 1 != int(fields[i + 1].index[1]):
                     if coordinates[coordinates.index(fields[i].index[0]) + 1] != ship.fields[i + 1].index[0]:
-                        raise FillingError(f"You cannot create a ship with coordinates {str([f.index for f in fields])}")
+                        raise FillingError(
+                            f"You cannot create a ship with coordinates {str([f.index for f in fields])}")
 
         except FillingError as error:
             logger.log(error)
@@ -160,8 +168,6 @@ class PlaygroundValidator:
                     return "horizontal"
                 else:
                     raise PlaygroundValidationError(f"The ship at fields {[f.index for f in fields]} is incorrect!")
-
-            fields_to_check = []
 
             if len(fields) > 1:
                 direction_type = get_direction_type()
@@ -232,8 +238,10 @@ class DirectionValidator:
     def _get_letter(self, position: str, current_letter: str):
         index = 0
 
-        if position == "next": index = 1
-        elif position == "prev": index = -1
+        if position == "next":
+            index = 1
+        elif position == "prev":
+            index = -1
 
         return self._c_letters[self._c_letters.index(current_letter) + index]
 
@@ -247,7 +255,7 @@ class DirectionValidator:
         return True if fields.index(field) == 0 else False
 
     def _is_last_field(self, fields: list, field: Field):
-        return True if fields.index(field) == len(fields)-1 else False
+        return True if fields.index(field) == len(fields) - 1 else False
 
     def _add_side_field(self, digit: str, letter: str, side: str):
         pass
@@ -269,10 +277,11 @@ class VerticalValidator(DirectionValidator):
     def _add_side_field(self, digit: str, letter: str, side: str):
         if side == "left" or side == "right":
             offset = -1 if side == "left" else 1
-            self._fields_to_check.append(self.fields_list[self._c_letters[self._c_letters.index(letter)+offset]][int(digit)-1])
+            self._fields_to_check.append(
+                self.fields_list[self._c_letters[self._c_letters.index(letter) + offset]][int(digit) - 1])
         if side == "top" or side == "bottom":
             offset = -2 if side == "top" else 0
-            self._fields_to_check.append(self.fields_list[letter][int(digit)+offset])
+            self._fields_to_check.append(self.fields_list[letter][int(digit) + offset])
 
     def validate(self, fields: list, field: Field):
         letter = self._pick_letter(field)
@@ -297,10 +306,10 @@ class VerticalValidator(DirectionValidator):
 class HorizontalValidator(DirectionValidator):
     def _add_side_field(self, digit: str, letter: str, side: str):
         if side == "prev" or side == "next":
-            self._fields_to_check.append(self.fields_list[self._get_letter(side, letter)][int(digit)-1])
+            self._fields_to_check.append(self.fields_list[self._get_letter(side, letter)][int(digit) - 1])
         if side == "top" or side == "bottom":
             offset = -2 if side == "top" else 0
-            self._fields_to_check.append(self.fields_list[letter][int(digit)+offset])
+            self._fields_to_check.append(self.fields_list[letter][int(digit) + offset])
 
     def validate(self, fields: list, field: Field):
         letter = self._pick_letter(field)
@@ -325,7 +334,7 @@ class HorizontalValidator(DirectionValidator):
 class DiagonalValidator(DirectionValidator):
     def _add_side_field(self, digit: str, letter: str, offset: tuple):
         self._fields_to_check.append(
-            self.fields_list[self._c_letters[self._c_letters.index(letter)+offset[0]]][int(digit)+offset[1]])
+            self.fields_list[self._c_letters[self._c_letters.index(letter) + offset[0]]][int(digit) + offset[1]])
 
     def validate(self, fields: list, field: Field):
         letter = self._pick_letter(field)

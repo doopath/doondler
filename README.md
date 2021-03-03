@@ -18,7 +18,8 @@
 git clone https://github.com/sha1om/doondler.git
 cd doondler
 chmod +x make
-./dist/install_dependencies
+chmod +x install_dependencies
+./install_dependencies
 ./make -pi -deps -b -i
 ```
 ****
@@ -28,7 +29,6 @@ chmod +x make
 # Cloning the repo
 git clone https://github.com/sha1om/doondler.git
 cd doondler
-git checkout to-build
 git pull
 
 # Install python using your package manager

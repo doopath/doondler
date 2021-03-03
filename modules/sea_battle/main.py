@@ -3,7 +3,7 @@ from modules.sea_battle.ship import Ship
 from modules.sea_battle.playground import Playground
 
 #  if __name__ == "__main__":
-pg = Playground()
+pg = Playground(is_hidden=True)
 pg.create()
 
 fields_list = [
