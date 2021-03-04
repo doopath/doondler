@@ -111,7 +111,7 @@ actions = {
         "option": "--performance-powersave"
     },
     "--sea-battle-render-beta": {
-        "action": render_handler.render(),
+        "action": render_handler.render,
         "arguments": 0,
         "option": "--sea-battle-render-beta"
     }
