@@ -1,11 +1,13 @@
-""" A plugin which gets weather info about set city. """
+""" A plugin that gets weather info about set city. """
 import requests
+
 from sys import exit
 from bs4 import BeautifulSoup
 
 from modules.config_reader import ConfigReader
 from modules.paths import get_path
 from modules.logger import Logger
+
 
 logger = Logger()
 
@@ -21,8 +23,8 @@ class ScreenWrapper:
 
         Methods
         -------
-        show(): void
-            Show wrapped information to a user.
+        render(): void
+            render wrapped information to a user.
     """
 
     def __init__(self, weather_info: dict):
@@ -47,11 +49,8 @@ class ScreenWrapper:
 
         return output
 
-    def _render(self):
+    def render(self):
         print(self._prepare_output())
-
-    def show(self):
-        self._render()
 
 
 class Synoptic:
@@ -110,7 +109,7 @@ class Synoptic:
     def get_weather(self):
         """ Get current weather in set in the configuration file city. """
         screen_wrapper = ScreenWrapper(self._take_info())
-        screen_wrapper.show()
+        screen_wrapper.render()
 
 
 if __name__ == "__main__":
