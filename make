@@ -43,7 +43,7 @@ class Builder:
     def build(self):
         """ Make a binary with pyinstaller and delete a rest. """
         print("\n")
-        os.system(f"pyinstaller --onefile {self.main_source} -n {self.target}")
+        os.system(f"python3 -m PyInstaller --onefile {self.main_source} -n {self.target}")
 
         self._remove_buildings()
 

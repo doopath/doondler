@@ -2,13 +2,14 @@
 from modules import yuigahama
 from modules.user import User
 from modules.package_managers import get_package_manager
+
 from modules.config import Config
 from modules.help import show_help_list
 from modules.password_generator import gen_password
 from modules.version_info import show_version_info
 from modules.synoptic import Synoptic
 from modules.performance_handler import PerformanceHandler
-from modules.sea_battle.render import render_handler
+from modules.sea_battle.render import beta_render
 
 # Using to test this and action_handler module.
 from tests.test_mock import test1_mock, test2_mock
@@ -111,7 +112,7 @@ actions = {
         "option": "--performance-powersave"
     },
     "--sea-battle-render-beta": {
-        "action": render_handler.render,
+        "action": beta_render,
         "arguments": 0,
         "option": "--sea-battle-render-beta"
     }

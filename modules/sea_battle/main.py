@@ -19,8 +19,9 @@ fields_list = [
 
 ships = [Ship(fields) for fields in fields_list]
 
-pg.fill(ships)
-pg.validate()
+if __name__ == "__main__":
+    pg.fill(ships)
+    pg.validate()
 
 #  print(pg.blow_up("A1"), "\n")
 #  print(pg.blow_up("A2"), "\n")

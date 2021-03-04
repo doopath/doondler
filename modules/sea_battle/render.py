@@ -5,7 +5,7 @@ from threading import Thread
 
 from modules.sea_battle.playground import Playground
 from modules.colors import to_cyan
-from modules.sea_battle.main import pg
+from modules.sea_battle.main import ships, pg
 
 
 class RenderHandler:
@@ -29,15 +29,14 @@ class RenderHandler:
         -------
         render(): void (IO)
             Returns a string that contains two playgrounds and their coordinates.
+        format_playgrounds(): void
+            Format using playgrounds (enemy's and user's ones).
     """
 
     def __init__(self, user_playground: Playground, enemy_playground: Playground):
         self._output = "\n\t\t--> Your and enemy's playgrounds <--\n\n"
         self.user_playground = user_playground
         self.enemy_playground = enemy_playground
-
-        self.user_playground.format()
-        self.enemy_playground.format()
 
         self._validate_playgrounds()
 
@@ -76,6 +75,10 @@ class RenderHandler:
 
         self._output += "\n\n"
 
+    def format_playgrounds(self):
+        self.user_playground.format()
+        self.enemy_playground.format()
+
     @property
     def output(self):
         return self._output
@@ -86,8 +89,12 @@ class RenderHandler:
         print(self._output)
 
 
-render_handler = RenderHandler(pg, pg)
+def beta_render():
+    pg.fill(ships)
+    pg.validate()
+    render_handler = RenderHandler(pg, pg)
+    render_handler.format_playgrounds()
+    render_handler.render()
 
 if __name__ == "__main__":
-    rh = RenderHandler(pg, pg)
-    rh.render()
+    beta_render()
