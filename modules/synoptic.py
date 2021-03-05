@@ -87,24 +87,30 @@ class Synoptic:
             exit()
 
     def _take_info(self):
-        soup = BeautifulSoup(self._parse_content(), "lxml")
+        try:
+            soup = BeautifulSoup(self._parse_content(), "lxml")
+            title = soup.select("div.header-title.header-title_in-fact")[0]
+            subtitle = soup.select("div.fact__time-yesterday-wrap")[0]
 
-        title = soup.select("div.header-title.header-title_in-fact")[0]
-        subtitle = soup.select("div.fact__time-yesterday-wrap")[0]
+            main_weather_block = soup.find("div", class_="fact__temp-wrap")
+            sub_weather_block = soup.find("div", class_="fact__props")
 
-        main_weather_block = soup.find("div", class_="fact__temp-wrap")
-        sub_weather_block = soup.find("div", class_="fact__props")
+            return {
+                "title": title.find("h1", id="main_title").get_text(),
+                "subtitle": subtitle.get_text(),
+                "temperature": main_weather_block.find("span", class_="temp__value_with-unit").get_text(),
+                "weather_type": main_weather_block.select("div.link__condition.day-anchor.i-bem")[0].get_text(),
+                "feels_like": main_weather_block.select("div.term.term_orient_h.fact__feels-like")[0].get_text(),
+                "wind_speed": sub_weather_block.find("div", class_="fact__wind-speed").get_text(),
+                "humidity": sub_weather_block.find("div", class_="fact__humidity").get_text(),
+                "pressure": sub_weather_block.find("div", class_="fact__pressure").get_text(),
+            }
 
-        return {
-            "title": title.find("h1", id="main_title").get_text(),
-            "subtitle": subtitle.get_text(),
-            "temperature": main_weather_block.find("span", class_="temp__value_with-unit").get_text(),
-            "weather_type": main_weather_block.select("div.link__condition.day-anchor.i-bem")[0].get_text(),
-            "feels_like": main_weather_block.select("div.term.term_orient_h.fact__feels-like")[0].get_text(),
-            "wind_speed": sub_weather_block.find("div", class_="fact__wind-speed").get_text(),
-            "humidity": sub_weather_block.find("div", class_="fact__humidity").get_text(),
-            "pressure": sub_weather_block.find("div", class_="fact__pressure").get_text(),
-        }
+        except IndexError as error:
+            logger.log(error)
+            logger.log("It seems to be a problem. I guess there is something wrong with a "
+                       "server. Please, wait and try again a little bit later.")
+            exit()
 
     def get_weather(self):
         """ Get current weather in set in the configuration file city. """
