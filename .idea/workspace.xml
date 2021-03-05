@@ -23,8 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf4410ff-c64b-4624-817b-84bdc5bc3646" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/synoptic.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/synoptic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/version_info.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/version_info.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -420,7 +419,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614971637461</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="the bug with incorrect server response was fixed">
+      <created>1614973175742</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1614973175742</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -459,6 +465,7 @@
     <MESSAGE value="bug fixes; added new options to the help list" />
     <MESSAGE value="unused imports deleted; util scripts updated; now you can build the project using nuitka!" />
     <MESSAGE value="version info updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="version info updated" />
+    <MESSAGE value="the bug with incorrect server response was fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="the bug with incorrect server response was fixed" />
   </component>
 </project>
