@@ -57,7 +57,7 @@ class ConfigPrototype:
         self.city = {
             "value": "",
             "main_question": f"Do you want to change your home dir or keep default={self.default['city']}?",
-            "confirm_question": "Ok, so enter your city like <los-angeles> or <nizhniy-novgorod>",
+            "confirm_question": "Ok, so enter your city like <los-angeles> or <nizhny-novgorod>",
             "default": self.default["city"]
         }
         self.handler = {

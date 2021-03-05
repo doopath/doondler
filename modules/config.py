@@ -144,7 +144,8 @@ class Config:
                 "exit": lambda: exit()
             }
 
-            assert self._is_valid_options(options, to_dos.keys()) is True, "You gave incorrect parameters to reinitialize!"
+            assert self._is_valid_options(options, to_dos.keys()) is True,\
+                "You gave incorrect parameters to reinitialize!"
 
             for option in options:
                 to_dos[option]()
@@ -166,11 +167,18 @@ class Config:
               "  cnh - choose new handler\n"
               "  snp - set new package manager\n")
 
+    def _prepare_reinit_options(self, input_line: str):
+        options = input_line.strip().strip("<").strip(">")
+        split_options = list(map(lambda item: item.strip(), options.split(",")))
+
+        return split_options if len(split_options) > 0 else options
+
     def _reinit(self):
         self._show_reinit_options()
 
         options = input('Please, take a few options like <cnh, snc, snn>: ')
-        options = options.strip().strip("<").strip(">")
+        options = self._prepare_reinit_options(options)
+
         self._reassign_params(options)
         self._create_user()
         self._create_doondlerc()
