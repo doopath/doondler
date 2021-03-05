@@ -22,13 +22,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf4410ff-c64b-4624-817b-84bdc5bc3646" name="Default Changelist" comment="">
+    <list default="true" id="cf4410ff-c64b-4624-817b-84bdc5bc3646" name="Default Changelist" comment="bug fixes; added new options to the help list">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/sea_battle/field.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/sea_battle/field.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/sea_battle/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/sea_battle/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/make" beforeDir="false" afterPath="$PROJECT_DIR$/make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/sea_battle/playground.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/sea_battle/playground.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/sea_battle/render.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/sea_battle/render.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/version_info.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/version_info.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +72,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/main.py" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager" selected="Python.batya">
     <configuration name="batya" type="PythonConfigurationType" factoryName="Python">
@@ -222,8 +223,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.init" />
       <item itemvalue="Python.batya" />
+      <item itemvalue="Python.init" />
       <item itemvalue="Python.main" />
       <item itemvalue="Python.playground" />
       <item itemvalue="Python.render" />

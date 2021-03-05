@@ -1,8 +1,6 @@
 """ A module of the playground. """
 import string
 
-from sys import exit
-
 from modules.logger import Logger
 
 from modules.sea_battle.field import Field
@@ -10,6 +8,7 @@ from modules.sea_battle.ship import Ship
 
 from modules.sea_battle.errors import FillingError
 from modules.sea_battle.errors import PlaygroundValidationError
+
 
 logger = Logger()
 

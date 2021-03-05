@@ -3,5 +3,5 @@ modules/__pycache__
 tests/__pycache__
 venv
 dist
-.idea
+main.build
 todos.txt

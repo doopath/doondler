@@ -26,7 +26,7 @@ class Builder:
 
         Methods
         -------
-        build()
+        build(): void
             build the project.
     """
 
@@ -34,19 +34,48 @@ class Builder:
         self.main_source = main
         self.target = target
 
-    def _remove_buildings(self):
+    def _remove_pyinstaller_buildings(self):
         shutil.rmtree("build")
         shutil.rmtree("__pycache__")
-
         os.remove(self.target + ".spec")
 
-    def build(self):
-        """ Make a binary with pyinstaller and delete a rest. """
-        print("\n")
+        if not os.path.isdir("./dist/pyinstaller"):
+            os.mkdir("./dist/pyinstaller")
+
+        shutil.move("./dist/" + self.target, "./dist/pyinstaller/")
+
+    def _remove_nuitka_buildings(self):
+        os.rename(self.main_source.split(".")[0] + ".bin", self.target)
+
+        if not os.path.isdir("./dist"):
+            os.mkdir("dist")
+        if not os.path.isdir("./dist/nuitka"):
+            os.mkdir("./dist/nuitka")
+
+        shutil.move(self.target, "dist/nuitka")
+
+    def _remove_buildings(self, build_tool: str):
+        if build_tool == "pyinstaller":
+            self._remove_pyinstaller_buildings()
+        elif build_tool == "nuitka":
+            self._remove_nuitka_buildings()
+
+    def _nuitka_build(self):
+        os.system(f"python3 -m nuitka --follow-imports --plugin-enable=pylint-warnings {self.main_source}")
+
+    def _pyinstaller_build(self):
         os.system(f"python3 -m PyInstaller --onefile {self.main_source} -n {self.target}")
 
-        self._remove_buildings()
+    def build(self, build_tool: str):
+        """ Make a binary with the build tool and delete rest. """
+        print("\n")
 
+        if build_tool == "pyinstaller":
+            self._pyinstaller_build()
+        elif build_tool == "nuitka":
+            self._nuitka_build()
+
+        self._remove_buildings(build_tool)
         print("Project was built successfully!")
 
 
@@ -145,9 +174,11 @@ if __name__ == "__main__":
     if "-deps" in sys.argv:
         install_dependencies()
 
-    if "-b" in sys.argv or len(sys.argv) < 2:
-        Builder(paths["main_name"], paths["target_name"]).build()
+    if "-nb" in sys.argv:
+        Builder(paths["main_name"], paths["target_name"]).build("nuitka")
+
+    if "-pb" in sys.argv:
+        Builder(paths["main_name"], paths["target_name"]).build("pyinstaller")
 
     if "-i" in sys.argv:
         Installer().install()
-

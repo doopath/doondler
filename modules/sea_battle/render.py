@@ -1,7 +1,5 @@
 """ A module that renders the playground and other things. """
 from os import system
-from time import sleep
-from threading import Thread
 
 from modules.sea_battle.playground import Playground
 from modules.colors import to_cyan
@@ -16,14 +14,13 @@ class RenderHandler:
 
         Attributes
         ----------
-        playground: Playground
-            The gaming playground.
+        user_playground: Playground
+            The user's gaming playground.
             Should be formatted with format() method at initialization.
 
-        Properties
-        ----------
-        output: str
-            An output string that has been prepared for you :>
+        enemy_playground: Playground
+            The enemy's gaming playground.
+            Should be formatted with format() method at initialization.
 
         Methods
         -------
@@ -95,6 +92,7 @@ def beta_render():
     render_handler = RenderHandler(pg, pg)
     render_handler.format_playgrounds()
     render_handler.render()
+
 
 if __name__ == "__main__":
     beta_render()
