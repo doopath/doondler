@@ -9,7 +9,9 @@ import shutil
 paths = {
     "main_name": "main.py",
     "target_name": "doondler",
-    "built_binary": "./dist/doondler",
+    "build_tool": "pyinstaller",
+    "built_binary_pyinstaller": "./dist/pyinstaller/doondler",
+    "built_binary_nuitka": "./dist/nuitka/doondler",
 }
 
 
@@ -23,6 +25,8 @@ class Builder:
             A name of a main file of the project.
         target: str
             A name of a target binary.
+        build_tool: str
+            A tool for project building.
 
         Methods
         -------
@@ -30,9 +34,10 @@ class Builder:
             build the project.
     """
 
-    def __init__(self, main: str, target: str):
-        self.main_source = main
-        self.target = target
+    def __init__(self):
+        self.main_source = paths["main_name"]
+        self.target = paths["target_name"]
+        self.build_tool = paths["build_tool"]
 
     def _remove_pyinstaller_buildings(self):
         shutil.rmtree("build")
@@ -41,6 +46,9 @@ class Builder:
 
         if not os.path.isdir("./dist/pyinstaller"):
             os.mkdir("./dist/pyinstaller")
+
+        if os.path.isfile(f"./dist/pyinstaller/{self.target}"):
+            os.remove(f"./dist/pyinstaller/{self.target}")
 
         shutil.move("./dist/" + self.target, "./dist/pyinstaller/")
 
@@ -52,12 +60,15 @@ class Builder:
         if not os.path.isdir("./dist/nuitka"):
             os.mkdir("./dist/nuitka")
 
+        if os.path.isfile(f"./dist/nuitka/{self.target}"):
+            os.remove(f"./dist/nuitka/{self.target}")
+
         shutil.move(self.target, "dist/nuitka")
 
-    def _remove_buildings(self, build_tool: str):
-        if build_tool == "pyinstaller":
+    def _remove_buildings(self):
+        if self.build_tool == "pyinstaller":
             self._remove_pyinstaller_buildings()
-        elif build_tool == "nuitka":
+        elif self.build_tool == "nuitka":
             self._remove_nuitka_buildings()
 
     def _nuitka_build(self):
@@ -66,16 +77,16 @@ class Builder:
     def _pyinstaller_build(self):
         os.system(f"python3 -m PyInstaller --onefile {self.main_source} -n {self.target}")
 
-    def build(self, build_tool: str):
+    def build(self):
         """ Make a binary with the build tool and delete rest. """
         print("\n")
 
-        if build_tool == "pyinstaller":
+        if self.build_tool == "pyinstaller":
             self._pyinstaller_build()
-        elif build_tool == "nuitka":
+        elif self.build_tool == "nuitka":
             self._nuitka_build()
 
-        self._remove_buildings(build_tool)
+        self._remove_buildings()
         print("Project was built successfully!")
 
 
@@ -83,11 +94,19 @@ class Installer:
     """
         A class of a built binary installer.
 
+        Attributes
+        ----------
+        build_tool: str
+            A tool for project building.
+
         Methods
         -------
         install()
             Install a built binary file.
     """
+
+    def __init__(self):
+        self.build_tool = paths["build_tool"]
 
     def _ask_user(self):
         answer = input("Do you want to install the binary to the /usr/bin path? (y/n): ").lower()
@@ -102,15 +121,15 @@ class Installer:
         return True
 
     def _check_binary_existence(self):
-        assert os.path.isfile(paths["built_binary"]), "The binary doesn't exists! Please, build project" \
-            " and after all install a binary."
+        assert os.path.isfile(paths["built_binary_"+self.build_tool]), "The binary doesn't exists! Please, build" \
+            " project and after all install a binary."
 
         return True
 
     def install(self):
         """ Install a built binary. """
         if self._ask_user() and self._check_binary_existence():
-            os.system(f"sudo cp {paths['built_binary']} /usr/bin/")
+            os.system(f"sudo cp {paths['built_binary_'+self.build_tool]} /usr/bin/")
             print("The program was successfully installed!")
 
 
@@ -146,7 +165,7 @@ def install_pyinstaller():
 
 def install_dependencies():
     """ Install all dependencies. """
-    pip = input("What is your python3 pip binary name (for example: pip3 in debian): ")
+    pip = input("What is your python3 pip binary name (for example: pip3 on debian): ")
     os.system(f"{pip} install -r requirements.txt")
 
     print("All of requirements are successfully installed!")
@@ -165,6 +184,12 @@ if __name__ == "__main__":
         paths["main_name"] = ask_info("building python file")
         paths["target_name"] = ask_info("building file")
 
+    if "-nuitka" in sys.argv:
+        paths["build_tool"] = "nuitka"
+
+    elif "-pyinstaller" in sys.argv:
+        paths["build_tool"] = "pyinstaller"
+
     if "-pip" in sys.argv:
         install_pip()
 
@@ -174,11 +199,8 @@ if __name__ == "__main__":
     if "-deps" in sys.argv:
         install_dependencies()
 
-    if "-nb" in sys.argv:
-        Builder(paths["main_name"], paths["target_name"]).build("nuitka")
-
-    if "-pb" in sys.argv:
-        Builder(paths["main_name"], paths["target_name"]).build("pyinstaller")
+    if "-b" in sys.argv:
+        Builder().build()
 
     if "-i" in sys.argv:
         Installer().install()
