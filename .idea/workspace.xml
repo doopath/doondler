@@ -22,14 +22,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf4410ff-c64b-4624-817b-84bdc5bc3646" name="Default Changelist" comment="bug fixes; added new options to the help list">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/make" beforeDir="false" afterPath="$PROJECT_DIR$/make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/sea_battle/playground.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/sea_battle/playground.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/sea_battle/render.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/sea_battle/render.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    <list default="true" id="cf4410ff-c64b-4624-817b-84bdc5bc3646" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/modules/version_info.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/version_info.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -411,7 +405,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614699563922</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="unused imports deleted; util scripts updated; now you can build the project using nuitka!">
+      <created>1614971584838</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1614971584838</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -448,6 +449,7 @@
     <MESSAGE value="added a validation of the playground" />
     <MESSAGE value="bug fixes; added some new features for sea_battle module" />
     <MESSAGE value="bug fixes; added new options to the help list" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fixes; added new options to the help list" />
+    <MESSAGE value="unused imports deleted; util scripts updated; now you can build the project using nuitka!" />
+    <option name="LAST_COMMIT_MESSAGE" value="unused imports deleted; util scripts updated; now you can build the project using nuitka!" />
   </component>
 </project>
