@@ -72,7 +72,7 @@ class ConfigReader:
 
         return config
 
-    def read(self):
+    def read(self) -> dict:
         """ Read content of the configuration file. """
         config_content = self._get_config_content()
         config_items = self._create_config_items(config_content)

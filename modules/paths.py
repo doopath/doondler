@@ -12,6 +12,7 @@ def get_paths():
     return {
         "home": get_home_dir(),
         "config": "/.doondlerc",
+        "config-copy": "/.doondlerc.copy",
         "logs": "/.doondler_logs",
         "note": "/.note_"
     }

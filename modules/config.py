@@ -1,12 +1,15 @@
 """ Init script creating .doohandlerc.py file """
 import os
-from sys import exit  # Necessary to pyinstaller building
+
+from sys import exit
 
 from modules.config_prototype import ConfigPrototype
+from modules.config_reader import ConfigReader
 from modules.logger import Logger
 from modules.errors import InitializationError
 from modules.paths import get_path
 from modules import yuigahama
+
 
 handlers = {
     "yuigahama": yuigahama.Handler
@@ -15,7 +18,7 @@ handlers = {
 logger = Logger(".doondler_logs")
 
 
-def take_handler(current_handler):
+def take_handler(current_handler) -> str:
     """ Ask user what he wants use as a handler and return it if exists. """
     try:
         desired_handler = ask_param(current_handler)
@@ -30,7 +33,7 @@ def take_handler(current_handler):
         return current_handler["default"]
 
 
-def param_is_valid(param: str):
+def param_is_valid(param: str) -> bool:
     """ Check if parameter is valid. """
     if len(param) == 0:
         return False
@@ -38,7 +41,7 @@ def param_is_valid(param: str):
     return True
 
 
-def ask_param(param: dict, skip=False):
+def ask_param(param: dict, skip: bool=False):
     """ Ask a value to user. """
     try:
         answ = input(param["main_question"] + " (y/n): ").upper()
@@ -63,7 +66,7 @@ def ask_param(param: dict, skip=False):
         exit()
 
 
-class Config:
+class Config(ConfigPrototype):
     """
         A class of main doondler config.
 
@@ -73,32 +76,38 @@ class Config:
             A proto of the configuration file.
         user: dict
             Current user with its parameters.
+        main_path: str
+            A path to the config.
+        copy_path: str
+            A path to the config copy (looks like /home/user/.doondlerc.copy)
 
         Methods
         -------
-        make(remake=False)
+        make(remake=False) -> None
             Make config file and fill it user's data.
             If remake flag was given then remake a config.
-        remake()
+        remake() -> None
             Remake a config file.
-        remove()
+        remove() -> None
             remove config file.
     """
 
     def __init__(self):
+        super().__init__()
         self.user = {}
-        self.prototype = ConfigPrototype()
+        self.main_path = get_path("config")
+        self.copy_path = get_path("config-copy")
 
     def _create_logfile(self):
         logfile = open(get_path("logs"), "w+")
         logfile.close()
 
     def _set_params(self):
-        self.prototype.username["value"] = ask_param(self.prototype.username)
-        self.prototype.home_dir["value"] = ask_param(self.prototype.home_dir)
-        self.prototype.city["value"] = ask_param(self.prototype.city)
-        self.prototype.handler["value"] = take_handler(self.prototype.handler)
-        self.prototype.package_manager["value"] = ask_param(self.prototype.package_manager)
+        self.username["value"] = ask_param(self.username)
+        self.home_dir["value"] = ask_param(self.home_dir)
+        self.city["value"] = ask_param(self.city)
+        self.handler["value"] = take_handler(self.handler)
+        self.package_manager["value"] = ask_param(self.package_manager)
 
     def _create_doondlerc(self):
         try:
@@ -118,7 +127,7 @@ class Config:
             logger.log(error)
             self.remake()
 
-    def _is_valid_options(self, options, to_dos):
+    def _is_valid_options(self, options: list, to_dos: list) -> bool:
         if len(options) < 1:
             return False
 
@@ -134,14 +143,14 @@ class Config:
 
         return True
 
-    def _reassign_params(self, options):
+    def _reassign_params(self, options: list):
         try:
             to_dos = {
-                "snn": lambda: ask_param(self.prototype.username),
-                "snh": lambda: ask_param(self.prototype.home_dir),
-                "snc": lambda: ask_param(self.prototype.city),
-                "cnh": lambda: ask_param(self.prototype.handler),
-                "snp": lambda: ask_param(self.prototype.package_manager),
+                "snn": lambda: ask_param(self.username),
+                "snh": lambda: ask_param(self.home_dir),
+                "snc": lambda: ask_param(self.city),
+                "cnh": lambda: ask_param(self.handler),
+                "snp": lambda: ask_param(self.package_manager),
                 "exit": lambda: exit()
             }
 
@@ -155,9 +164,19 @@ class Config:
             logger.log(error)
             exit()
 
+    def _set_local_params(self):
+        local_config = ConfigReader(self.copy_path)
+        local_config = local_config.read()
+
+        for param, value in local_config.items():
+            self.user[param] = value
+
     def _create_user(self):
-        for _name, _value in self.prototype.__dict__.items():
-            self.user[_name] = _value["value"]
+        self.user["username"] = self.username["value"] or self.user["username"]
+        self.user["home_dir"] = self.home_dir["value"] or self.user["home_dir"]
+        self.user["city"] = self.city["value"] or self.user["city"]
+        self.user["handler"] = self.handler["value"] or self.user["handler"]
+        self.user["package_manager"] = self.package_manager["value"] or self.user["package_manager"]
 
     def _show_reinit_options(self):
         print("Options: \n"
@@ -174,6 +193,25 @@ class Config:
 
         return split_options if len(split_options) > 0 else options
 
+    def _make_copy(self):
+        config_path = self.main_path
+        config_copy_path = self.copy_path
+
+        if not os.path.isfile(config_path):
+            raise FileExistsError("Config does not exist!")
+
+        with open(config_path) as config:
+            with open(config_copy_path, "w+") as config_copy:
+                config_copy.write(config.read())
+
+    def _remove_copy(self):
+        config_copy_path = self.copy_path
+
+        if not os.path.isfile(config_copy_path):
+            raise FileExistsError("Config copy does not exist!")
+
+        os.remove(config_copy_path)
+
     def _reinit(self):
         self._show_reinit_options()
 
@@ -181,22 +219,23 @@ class Config:
         options = self._prepare_reinit_options(options)
 
         self._reassign_params(options)
+        self._set_local_params()
         self._create_user()
         self._create_doondlerc()
 
         print("\n☑ You have successfully initialized!")
-        exit()
 
     def make(self, remake=False):
         """ Make a config file (~/.doondlerc). """
         if remake:
             self._reinit()
+            self._remove_copy()
+            exit()
 
-        print(f"Hello, {self.prototype.username['default']}!")
+        print(f"Hello, {self.username['default']}!")
 
         self._set_params()
         self._create_user()
-
         self._create_logfile()
         self._create_doondlerc()
 
@@ -205,10 +244,10 @@ class Config:
 
     def remove(self):
         """ Remove a config file. """
-        is_config_exists = os.path.isfile(get_path("config"))
+        is_config_exists = os.path.isfile(self.main_path)
         assert is_config_exists, "You cannot remove file that not exists!"
 
-        os.remove(get_path("config"))
+        os.remove(self.main_path)
 
     def remake(self):
         """ Remake a configuration file. """
@@ -220,6 +259,7 @@ class Config:
         print("\n")
 
         if answ == "1":
+            self._make_copy()
             self.remove()
             self.make(remake=True)
         else:
