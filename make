@@ -1,5 +1,5 @@
 #! /usr/bin/python3
-""" Build script for doondler sources """
+""" Build script for doondler sources. """
 
 import os
 import sys
@@ -172,6 +172,7 @@ def install_dependencies():
 
 
 def install_pip():
+    """ Install the python package manager. """
     os.system("curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py")
     os.system("python3 get-pip.py")
     os.system("rm ./get-pip.py")

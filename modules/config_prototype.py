@@ -15,8 +15,6 @@ class ConfigPrototype:
         said "y" to a main question and wants to type its value and default value
         of a parameter that be use if user answered "n" to a main question.
 
-        There is docs:
-
         Attributes
         ----------
         default: dict
@@ -72,5 +70,5 @@ class ConfigPrototype:
             "confirm_question": "Ok, then enter your package manager",
             "default": self.default["package_manager"]
         }
-        del self.__dict__["default"]
 
+        del self.__dict__["default"]
