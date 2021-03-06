@@ -1,16 +1,14 @@
 """ A module of the playground. """
 import string
 
-from modules.logger import Logger
+from modules.logger import logger
 
 from modules.sea_battle.field import Field
 from modules.sea_battle.ship import Ship
 
+from modules.errors import Warning
 from modules.sea_battle.errors import FillingError
 from modules.sea_battle.errors import PlaygroundValidationError
-
-
-logger = Logger()
 
 
 class Playground:
@@ -156,6 +154,15 @@ class PlaygroundValidator:
     def _clear_fields_to_check(self):
         self._fields_to_check = []
 
+    def _handle_playground_validation_error(
+            self, error: PlaygroundValidationError, fields: list, ship: Ship):
+        logger.set_traceback_showing_mode(False)
+        logger.log(error)
+        ship.unset()
+        self._clear_fields_to_check()
+        logger.log(Warning(f"The ship at fields {[f.index for f in fields]} was unset."))
+        logger.set_traceback_showing_mode(True)
+
     def _is_valid_location(self, ship):
         fields = ship.fields
 
@@ -186,10 +193,7 @@ class PlaygroundValidator:
                     raise PlaygroundValidationError(f"The ship at fields {[f.index for f in fields]} is incorrect!")
 
         except PlaygroundValidationError as error:
-            logger.log(error)
-            ship.unset()
-            self._clear_fields_to_check()
-            logger.log(f"The ship at fields {[f.index for f in fields]} was unset.")
+            self._handle_playground_validation_error(error, fields, ship)
 
     def validate(self, ship: Ship):
         """ Validate a ship and raise a validation error if it's incorrect. """

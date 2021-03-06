@@ -2,10 +2,11 @@
 import os
 
 from sys import exit
+from typing import KeysView
 
 from modules.config_prototype import ConfigPrototype
 from modules.config_reader import ConfigReader
-from modules.logger import Logger
+from modules.logger import logger
 from modules.errors import InitializationError
 from modules.paths import get_path
 from modules import yuigahama
@@ -14,8 +15,6 @@ from modules import yuigahama
 handlers = {
     "yuigahama": yuigahama.Handler
 }
-
-logger = Logger(".doondler_logs")
 
 
 def take_handler(current_handler) -> str:
@@ -127,7 +126,7 @@ class Config(ConfigPrototype):
             logger.log(error)
             self.remake()
 
-    def _is_valid_options(self, options: list, to_dos: list) -> bool:
+    def _is_valid_options(self, options: list, to_dos: KeysView) -> bool:
         if len(options) < 1:
             return False
 
@@ -187,11 +186,11 @@ class Config(ConfigPrototype):
               "  cnh - choose new handler\n"
               "  snp - set new package manager\n")
 
-    def _prepare_reinit_options(self, input_line: str):
+    def _prepare_reinit_options(self, input_line: str) -> list:
         options = input_line.strip().strip("<").strip(">")
         split_options = list(map(lambda item: item.strip(), options.split(",")))
 
-        return split_options if len(split_options) > 0 else options
+        return split_options if len(split_options) > 0 else [options]
 
     def _make_copy(self):
         config_path = self.main_path

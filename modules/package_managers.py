@@ -1,12 +1,10 @@
 """ A module of system pocket managers. """
 import os
 import distro
+
 from sys import exit
 
-from modules.logger import Logger
-
-
-logger = Logger()
+from modules.logger import logger
 
 
 class PackageManager:

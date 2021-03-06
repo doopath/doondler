@@ -3,11 +3,10 @@ import os
 import time
 
 from sys import exit
-from modules.logger import Logger
+
+from modules.logger import logger
+from modules.errors import Warning
 from modules.paths import get_path
-
-
-logger = Logger()
 
 
 def gen_note(deadline, author, message):
@@ -72,7 +71,7 @@ class Note:
         os.system(f"nohup python3 -u {get_path('note')}{self.deadline} > "
                   f"{get_path('note')}{self.deadline}_output &")
 
-        logger.log(f"Added a new note ({get_path('note')}{self.deadline})")
+        logger.log(Warning(f"Added a new note ({get_path('note')}{self.deadline})"))
 
     def delete(self):
         """ Delete notification. """

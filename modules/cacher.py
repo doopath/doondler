@@ -8,7 +8,7 @@ class Cacher:
     """
     _cache = {}
 
-    def cache(self, func: callable):
+    def cache(self, func):
         """ Memoize and cache value. """
         def gen_cache(name: str, args: tuple, kwargs: dict):
             cache_key = name + '-'

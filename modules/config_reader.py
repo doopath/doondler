@@ -2,12 +2,9 @@
 import os
 import sys
 
-from modules.logger import Logger
+from modules.logger import logger
 from modules.errors import InitializationError
 from modules.paths import get_path
-
-
-logger = Logger()
 
 
 class ConfigReader:

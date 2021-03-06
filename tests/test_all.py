@@ -2,6 +2,7 @@
 """ Main module that runs all tests """
 
 from modules.timeit import timeit
+
 from tests.success import success
 from tests import config_test
 from tests import action_handler_test
@@ -32,7 +33,7 @@ def show_start_notify(test_name: str):
 
 
 @timeit
-def run_test(test: callable, test_name: str):
+def run_test(test, test_name: str):
     """ Run one test. """
     show_start_notify(test_name)
     test()

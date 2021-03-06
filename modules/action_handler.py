@@ -1,11 +1,8 @@
 """ Action handler module """
 import sys
 
-from modules.logger import Logger
+from modules.logger import logger
 from modules.actions import actions
-
-
-logger = Logger()
 
 
 class ActionHandler:

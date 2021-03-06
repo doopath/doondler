@@ -3,11 +3,8 @@ import os
 import sys
 
 from modules.config_reader import ConfigReader
-from modules.logger import Logger
+from modules.logger import logger
 from modules.paths import get_path
-
-
-logger = Logger()
 
 
 class ConfigWriter:
@@ -114,7 +111,7 @@ class ConfigWriter:
 
             config = open(self.path, "w")
             config_content = self._erase_items(config_content, names or [name])
-            self._write_items_to_config(config, config_content)
+            self._write_items_to_config(config, config_content or {})
             config.close()
 
         except AssertionError as e:

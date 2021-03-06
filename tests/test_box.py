@@ -2,7 +2,7 @@
 from tests.fail import fail
 
 
-def test_box(func: callable):
+def test_box(func):
     """ Testing of some method or function. """
     def inner_wrapper(*args, **kwargs):
         try:

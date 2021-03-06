@@ -4,12 +4,10 @@ import requests
 from sys import exit
 from bs4 import BeautifulSoup
 
+from modules.errors import Warning
 from modules.config_reader import ConfigReader
 from modules.paths import get_path
-from modules.logger import Logger
-
-
-logger = Logger()
+from modules.logger import logger
 
 
 class ScreenWrapper:
@@ -107,9 +105,11 @@ class Synoptic:
             }
 
         except IndexError as error:
+            logger.set_traceback_showing_mode(False)
             logger.log(error)
-            logger.log("It seems to be a problem. I guess there is something wrong with a "
-                       "server. Please, wait and try again a little bit later.")
+            logger.log(Warning(
+                "It seems to be a problem. I guess there is something wrong with a "
+                "server. Please, wait and try again a little bit later."))
             exit()
 
     def get_weather(self):
