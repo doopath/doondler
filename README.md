@@ -23,7 +23,7 @@ chmod +x install_dependencies
 
 # The first way to compile doondler is using pyinstaller
 # Compilation process pretty fast but the target binary 
-# works a little bit slower than second way
+# works a little bit slower than the second one
 ./make -pi -pyinstaller -deps -b -i
 
 # Or this one. It's using nuitka - https://github.com/Nuitka/Nuitka.
