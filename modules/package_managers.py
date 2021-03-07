@@ -1,4 +1,4 @@
-""" A module of system pocket managers. """
+""" A module of system package managers. """
 import os
 import distro
 
@@ -9,12 +9,12 @@ from modules.logger import logger
 
 class PackageManager:
     """
-        An abstract class of system pocket manager.
+        An abstract class of system package manager.
 
         Attributes
         ----------
         name: str
-            Name of pocket manager.
+            Name of package manager.
 
         Methods
         -------
@@ -159,16 +159,16 @@ def get_couples():
 
 
 def get_package_manager(manager_name: str):
-    """ Create a pocket manager. """
+    """ Create a package manager. """
     try:
         managers = get_managers()
-        pocket_manager = managers[manager_name]
+        package_manager = managers[manager_name]
 
         assert manager_name in managers, f"Package manager with name: {manager_name} doesn't exits!"
 
-        return pocket_manager
+        return package_manager
 
-    except AssertionError as error:
+    except (AssertionError, KeyError) as error:
         logger.log(error)
         exit()
 

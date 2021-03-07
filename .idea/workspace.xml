@@ -23,8 +23,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf4410ff-c64b-4624-817b-84bdc5bc3646" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/make" beforeDir="false" afterPath="$PROJECT_DIR$/make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/.doondler_logs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +68,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/main.py" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager" selected="Python.synoptic">
     <configuration name="batya" type="PythonConfigurationType" factoryName="Python">
@@ -223,8 +224,8 @@
       <item itemvalue="Python.main" />
       <item itemvalue="Python.render" />
       <item itemvalue="Python.server" />
-      <item itemvalue="Python.test_all" />
       <item itemvalue="Python.synoptic" />
+      <item itemvalue="Python.test_all" />
     </list>
     <recent_temporary>
       <list>
