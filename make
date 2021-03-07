@@ -75,7 +75,7 @@ class Builder:
         os.system(f"python3 -m nuitka --follow-imports --plugin-enable=pylint-warnings {self.main_source}")
 
     def _pyinstaller_build(self):
-        os.system(f"python3 -m pyinstaller --onefile {self.main_source} -n {self.target}")
+        os.system(f"python3 -m PyInstaller --onefile {self.main_source} -n {self.target}")
 
     def build(self):
         """ Make a binary with the build tool and delete rest. """
