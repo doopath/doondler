@@ -38,7 +38,7 @@ class ConfigPrototype:
             "home_dir": get_path("home"),
             "city": "moscow",
             "handler": yuigahama.Handler,
-            "package_manager": DefaultManager().get_default_manager().name
+            "package_manager": DefaultManager().get_default_manager(ask_if_not_found=False).name
         }
         self.username = {
             "value": "",
