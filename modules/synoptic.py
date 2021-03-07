@@ -3,6 +3,7 @@ import requests
 
 from sys import exit
 from bs4 import BeautifulSoup
+from fake_useragent import UserAgent
 
 from modules.errors import Warning
 from modules.config_reader import ConfigReader
@@ -72,10 +73,11 @@ class Synoptic:
     def __init__(self):
         self.city = ConfigReader(get_path("config")).read()["city"]
         self.api_url = f"https://yandex.com/pogoda/{self.city}"
+        self.headers = {'User-Agent': UserAgent().chrome}
 
     def _parse_content(self):
         try:
-            html = requests.get(self.api_url)
+            html = requests.get(self.api_url, headers=self.headers)
             assert html.status_code == 200, f"A city {self.city} does not exists in YandexPogoda service!"
 
             return html.text
@@ -87,6 +89,7 @@ class Synoptic:
     def _take_info(self):
         try:
             soup = BeautifulSoup(self._parse_content(), "lxml")
+            gotten_message = soup.find("p", class_=["text-wrapper", "text-wrapper_info"]).get_text()
             title = soup.select("div.header-title.header-title_in-fact")[0]
             subtitle = soup.select("div.fact__time-yesterday-wrap")[0]
 
@@ -109,7 +112,9 @@ class Synoptic:
             logger.log(error)
             logger.log(Warning(
                 "It seems to be a problem. I guess there is something wrong with a "
-                "server. Please, wait and try again a little bit later."))
+                "server. Please, wait and try again a little bit later.\n"
+                "Also, you probably were banned by YandexPogoda service.\n"
+                "Server said: %s" % gotten_message))
             exit()
 
     def get_weather(self):

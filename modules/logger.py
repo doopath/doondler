@@ -37,7 +37,7 @@ class Logger:
         Set a mode (True or False) for showing a traceback.
     """
 
-    def __init__(self, log_path: str=get_path("logs"), log_level: int = 2, enable_traceback: bool=True):
+    def __init__(self, log_path: str = get_path("logs"), log_level: int = 2, enable_traceback: bool = True):
         self.log_path = log_path
         self.log_level = log_level
         self.enable_traceback = enable_traceback

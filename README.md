@@ -35,25 +35,31 @@ chmod +x install_dependencies
 
 **If you want to build it (in arch-linux):**
 ```shell
+# -> Installling sources:
+
 # Cloning the repo
 git clone https://github.com/sha1om/doondler.git
 cd doondler
 git pull
 
+# -> Installing dependencies:
+
 # Install python using your package manager
 sudo pacman -S python3 python2.7 pip
 
-# Python dependencies
-pip3 install pyinstaller
-pip3 install -r requirements.txt
+# Choose one of these:
+python3 -m pip install pyinstaller
+python3 -m pip install nuitka
 
-# If your pyinstaller start looks like
-# "pyinstaller: command not found"
-# then find the pyinstaller binary (it may be in .local/bin)
-# and move to /usr/bin to start it easy
+python3 -m pip install -r requirements.txt
 
-# Building
+# -> Building:
 mkdir build && cd build
-pyinstaller --onefile ../main.py -n doondler
+
+# Choose your build tool:
+python3 -m pyinstaller --onefile ../main.py -n doondler
+python3 -m nuitka --follow-imports ../main.py && mkdir ../dist && mv main.bin ../dist/doondler
+
+# Installing
 sudo mv ./dist/doondler /usr/bin/
 ```

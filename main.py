@@ -4,7 +4,6 @@ import sys
 from modules.config import Config
 
 
-
 if __name__ == "__main__":
     # If the flags weren't gotten
     if len(sys.argv) < 2:

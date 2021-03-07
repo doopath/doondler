@@ -1,4 +1,4 @@
-#! /usr/bin/python3
+#! python3.9
 """ Build script for doondler sources. """
 
 import os
@@ -75,7 +75,7 @@ class Builder:
         os.system(f"python3 -m nuitka --follow-imports --plugin-enable=pylint-warnings {self.main_source}")
 
     def _pyinstaller_build(self):
-        os.system(f"python3 -m PyInstaller --onefile {self.main_source} -n {self.target}")
+        os.system(f"python3 -m pyinstaller --onefile {self.main_source} -n {self.target}")
 
     def build(self):
         """ Make a binary with the build tool and delete rest. """
@@ -108,7 +108,7 @@ class Installer:
     def __init__(self):
         self.build_tool = paths["build_tool"]
 
-    def _ask_user(self):
+    def _ask_user(self) -> bool:
         answer = input("Do you want to install the binary to the /usr/bin path? (y/n): ").lower()
 
         if answer == "n":
@@ -120,7 +120,7 @@ class Installer:
 
         return True
 
-    def _check_binary_existence(self):
+    def _check_binary_existence(self) -> bool:
         assert os.path.isfile(paths["built_binary_"+self.build_tool]), "The binary doesn't exists! Please, build" \
             " project and after all install a binary."
 
@@ -133,7 +133,7 @@ class Installer:
             print("The program was successfully installed!")
 
 
-def ask_info(param_name):
+def ask_info(param_name) -> str:
     """ Ask some parameter value to user. """
     try:
         answer = input(f"Please, enter the {param_name} name: ")
@@ -148,25 +148,12 @@ def ask_info(param_name):
 
 def install_pyinstaller():
     """ Install the pyinstaller build tool. """
-    if os.path.isfile("/usr/bin/pyinstaller") is False:
-        answer = input("The path /usr/bin/ doest not contains a pyinstaller binary,"
-                       " did you install it or install now? (y/n): ")
-
-        if answer.lower() == "y":
-            pip = input("What is your python3 pip binary name (for example: pip3 in debian): ")
-            os.system(f"{pip} install pyinstaller")
-            os.system("sudo cp ~/.local/bin/pyinstaller /usr/bin/")
-        elif answer.lower() != "y" and answer.lower() != "n":
-            print("Please, answer y or n!")
-            install_pyinstaller()
-    else:
-        print("Pyinstaller is already installed! Nothing to do.")
+    os.system(f"python3 -m pip install pyinstaller")
 
 
 def install_dependencies():
     """ Install all dependencies. """
-    pip = input("What is your python3 pip binary name (for example: pip3 on debian): ")
-    os.system(f"{pip} install -r requirements.txt")
+    os.system(f"python3 -m pip install -r requirements.txt")
 
     print("All of requirements are successfully installed!")
 
