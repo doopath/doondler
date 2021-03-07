@@ -1,6 +1,5 @@
 """ Any paths of configs, log files et cetera. """
 from os import path
-from typing import Callable
 
 
 def get_home_dir():
@@ -31,7 +30,13 @@ def paths_decorator(func):
     """ Get dict of any paths. """
 
     def inner(name: str) -> str:
-        return get_absolute_path(func(name))
+        local_path = func(name)
+        absolute_path = get_absolute_path(local_path)
+
+        if absolute_path == local_path * 2:
+            return local_path
+
+        return absolute_path
 
     return inner
 
