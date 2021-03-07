@@ -5,6 +5,7 @@ import distro
 from sys import exit
 
 from modules.logger import logger
+from modules.config_reader import ConfigReader
 
 
 class PackageManager:
@@ -206,11 +207,11 @@ class DefaultManager:
             logger.log(error)
             exit()
 
-    def get_default_manager(self):
+    def get_default_manager(self, ask_if_not_found: bool=False):
         """ Get default package manager. """
         current_distro = distro.id()
 
-        if current_distro not in self.couples:
+        if current_distro not in self.couples and ask_if_not_found:
             print("Sorry, but we cannot recognize your package manager. Now you cannot use a few of features."
                   "But we support these managers: ")
             self._show_managers()
@@ -219,5 +220,11 @@ class DefaultManager:
             self._check_if_manager_exists(manager)
 
             return self.managers[manager]
+
+        elif current_distro not in self.couples and not ask_if_not_found:
+            config_content = ConfigReader().read()
+            assert "package_manager" in config_content, "You did not set the package manager in you config file!"
+
+            return self.managers[config_content["package_manager"]]
 
         return self.couples[current_distro]
