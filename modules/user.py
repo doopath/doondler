@@ -3,20 +3,20 @@ import os
 import sys
 
 from modules.config_reader import ConfigReader
-from modules.logger import Logger
+from modules.logger import logger
 from modules.paths import get_path
 from modules.errors import *
 
 home = get_path("home")
 config_reader = ConfigReader(get_path("config"))
-logger = Logger()
 
 
 def check_if_config_exists():
     """ Check if required configuration file exists. """
     if not os.path.isfile(get_path("config")):
-        print("✘ You haven't initialized! Execute doondler --init to create a"
-              " user config file and continue!")
+        logger.log(Warning(
+            "✘ You haven't initialized! Execute doondler --init to create a"
+            " user config file and continue!"))
         raise InitializationError(
             "Initialization error! Initialize and try again!")
 

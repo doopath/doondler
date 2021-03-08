@@ -3,14 +3,13 @@ import os
 import time
 
 from sys import exit
-from modules.logger import Logger
+
+from modules.logger import logger
+from modules.errors import Warning
 from modules.paths import get_path
 
 
-logger = Logger()
-
-
-def gen_note(deadline, author, message):
+def gen_note(deadline: int, author: str, message: str) -> str:
     """ Generate notification (create a .note_index file and remove it ad dead time). """
     note_content = "" \
                    "#!/usr/bin/env python3\n" \
@@ -30,6 +29,8 @@ def gen_note(deadline, author, message):
                    f"os.remove(os.path.expanduser('~') + '/.note_{deadline}_output')\n" \
                    "\n"
 
+    logger.log("Generated a note at the modules.note.gen_note function.")
+
     return note_content
 
 
@@ -42,6 +43,7 @@ class Note:
         self.deadline = full_deadline or deadline
         self.fixed_deadline = bool(full_deadline)
         self.home_dir = get_path("home")
+        logger.log("An instance of the modules.note.Note class was created.")
 
     def _set_deadline(self):
         if not self.fixed_deadline:
@@ -72,7 +74,7 @@ class Note:
         os.system(f"nohup python3 -u {get_path('note')}{self.deadline} > "
                   f"{get_path('note')}{self.deadline}_output &")
 
-        logger.log(f"Added a new note ({get_path('note')}{self.deadline})")
+        logger.log(Warning(f"Added a new note ({get_path('note')}{self.deadline})"))
 
     def delete(self):
         """ Delete notification. """
@@ -88,8 +90,3 @@ class Note:
         except AssertionError as error:
             logger.log(error)
             exit()
-
-
-if __name__ == "__main__":
-    Note("Yuigahama", "Yahallo!", 5).create()
-

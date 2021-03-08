@@ -76,7 +76,7 @@ def remake_test():
     """ Testing of the remake method. """
     print("\nTesting of the remake method...")
 
-    os.system("python3 ../main.py --reinit")
+    os.system("python3 ../main.py -reinit")
 
     assert os.path.isfile(CONFIG_PATH), "Config file does not exists!"
     assert os.path.isfile(LOGS_PATH), "Log file does not exists!"

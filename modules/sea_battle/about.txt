@@ -1,0 +1,17 @@
+The Sea Battle game is a old-fasion table game.
+
+Lore
+----
+Sea Battle is a multiplayer strategy game released by Mattel for its Intellivision video game system in 1980. In the game, players command fleets of naval vessels attempting to invade the harbor of their opponent.
+
+Original gameplay
+-----------------
+In Sea Battle, players must successfully invade the home port of their opponent while protecting their own ports from invasion. Game play takes place in an island-dotted ocean, with one player's home port at the lower-left corner of the screen and the other player's home port at the upper-right corner. Each player has access to thirteen naval vessels representing eight different ship types.[3] The player may organize these ships into smaller fleets, with a maximum of three ships per fleet and four fleets active at one time. Single-ship fleets are permitted, while larger fleets may not have two ships of the same type in one fleet. When fleets are deployed, the first ship selected as part of the fleet becomes its flagship.
+
+During the game's "strategy phase," players can only see the location of enemy fleets on the screen, and not what ships are within them. Players may only direct one fleet at a time, and may cycle through them at any time. Players move the fleets by directing them on the desired heading, with the fleet moving in that direction until ordered to stop or until encountering land or another fleet. Should two opposing fleets approach each other, all action stops and the two fleets begin to flash rapidly. Either player may choose to engage in battle, or if neither player engages, the two fleets will continue moving their separate ways after a few moments.
+
+When two fleets engage, Sea Battle enters the "combat phase." The action zooms into the section of the ocean where the fleets are located, and both fleets become visible. Players take control of their respective flagships and attempt to sink the ship(s) in the opponent's fleet. Ships can be damaged by enemy fire or by colliding with land, and sink when they have taken too much damage for that particular ship type. If the player's flagship sinks, control shifts to the next ship in that player's fleet. Combat ends and the game returns to the strategy phase when all ships in one player's fleet are destroyed. A player may also choose to retreat from battle, but must survive for 15 seconds after sounding the retreat in order to successfully escape.
+
+Ships that have been damaged can be repaired by directing them back to the player's home port. Also, fleets may be disbanded and re-assembled while in the home port. However, the player may only do so a combined total of three times per game. Gameplay continues in this fashion until one of the players directs their aircraft carrier or troop transport into the opponent's home port, thus successfully invading it and winning the game. Should the player lose both ships during battle, any remaining ship in their fleets may invade the port. 
+
+

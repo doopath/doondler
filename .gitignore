@@ -1,7 +1,13 @@
 __pycache__
 modules/__pycache__
+modules/sea_battle/__pycache__
 tests/__pycache__
-venv
-venv/*
+.mypy_cache
+
+dist
+main.build
 
 todos.txt
+
+releases
+venv

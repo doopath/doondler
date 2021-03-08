@@ -2,14 +2,11 @@
 import random
 import string
 
-from pyperclip import copy as copy_to_clip
 from sys import exit
+from pyperclip import copy as copy_to_clip
 
-from modules.logger import Logger
+from modules.logger import logger
 from modules.colors import to_green
-
-
-logger = Logger()
 
 
 class PasswordGenerator:

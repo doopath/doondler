@@ -18,33 +18,48 @@
 git clone https://github.com/sha1om/doondler.git
 cd doondler
 chmod +x make
-./dist/install_dependencies
-./make -pi -deps -b -i
+chmod +x install_dependencies
+./install_dependencies
+
+# The first way to compile doondler is using pyinstaller
+# Compilation process pretty fast but the target binary 
+# works a little bit slower than the second one
+./make -pi -pyinstaller -deps -b -i
+
+# Or this one. It's using nuitka - https://github.com/Nuitka/Nuitka.
+# Compilation process is slower than first method, but it takes less
+# memory and works faster.
+./make -pi -nuitka -deps -b -i
 ```
 ****
 
 **If you want to build it (in arch-linux):**
 ```shell
+# -> Installling sources:
+
 # Cloning the repo
 git clone https://github.com/sha1om/doondler.git
 cd doondler
-git checkout to-build
 git pull
 
+# -> Installing dependencies:
+
 # Install python using your package manager
-sudo pacman -S python python2.7 pip
+sudo pacman -S python3 python2.7 pip
 
-# Python dependencies
-pip install pyinstaller
-pip install -r requirements.txt
+# Choose one of these:
+python3 -m pip install pyinstaller
+python3 -m pip install nuitka
 
-# If your pyinstaller start looks like
-# "pyinstaller: command not found"
-# then find the pyinstaller binary (it may be in .local/bin)
-# and move to /usr/bin to start it easy
+python3 -m pip install -r requirements.txt
 
-# Building
+# -> Building:
 mkdir build && cd build
-pyinstaller --onefile ../main.py -n doondler
+
+# Choose your build tool:
+python3 -m pyinstaller --onefile ../main.py -n doondler
+python3 -m nuitka --follow-imports ../main.py && mkdir ../dist && mv main.bin ../dist/doondler
+
+# Installing
 sudo mv ./dist/doondler /usr/bin/
 ```

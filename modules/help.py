@@ -1,9 +1,10 @@
 """ View help list if parameters weren't given or gotten something incorrect. """
 
 ACTIONS_LIST = """
-               --init:  Initialize your local config
+               --version: show a version information
+               --help: show help list of available parameters
+               --init:  Initialize or reinitialize your local config
                --make-note <message> <deadline>s/m/h:  Make a notification with a deadline
-               -reinit: Reinitialize your local config
                --help: Show help message
                -install <program>: Install a program using your package manager
                -i <program>: A short version of -install
@@ -13,6 +14,8 @@ ACTIONS_LIST = """
                --gen-password <prefix> <length>: Generate unique random password
                -gp <prefix> <length>: A short version of --gen-password
                -weather: Get a current weather info: temperature, humidity, pressure etc
+               --performance-boost: Set performance CPU mode
+               --performance-powersave: Set powersave CPU mode
                \n
                """
 

@@ -17,17 +17,17 @@
 
 
 info = {
-    "build_number": "UCB-31012021-02",
-    "version": "0.4.6",
-    "kernel": "linux 5.4.0-64-generic",
+    "build_number": "SFB-08032021-00",
+    "version": "0.5.3",
+    "kernel": "linux 5.11.2",
     "platform": "AMD Ryzen 3600U",
     "os": "Ubuntu-20.04"
 }
 
+
 def show_version_info():
     """ Show information about doondler. """
-    print("Doondler | a linux system handler by doopath")
-    print("Developed in 2020. Russia. Nizhniy Novgorod.")
-    print(f"Current version: {info['version']} | Current build number: {info['build_number']}")
-    print(f"Was built on {info['os']} & {info['kernel']} {info['platform']}.")
-
+    print("Doondler is a linux system handler by doopath.")
+    print("Developed in 2020. Russia. Nizhny Novgorod.")
+    print(f"Current version: {info['version']} | Current build number: {info['build_number']}.")
+    print(f"Was built on {info['os']} & {info['kernel']} {info['platform']}.\n")

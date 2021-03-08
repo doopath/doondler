@@ -2,18 +2,21 @@
 
 
 class Cacher:
-    """ A class of cache saver. """
+    """
+        A class of a cache saver.
+
+    """
     _cache = {}
 
-    def cache(self, func: callable):
+    def cache(self, func):
         """ Memoize and cache value. """
         def gen_cache(name: str, args: tuple, kwargs: dict):
             cache_key = name + '-'
 
             for arg in args:
                 cache_key += str(arg) + "-"
-            for _, kwarg in kwargs.items():
-                cache_key += _ + "=" + str(kwarg)
+            for key, value in kwargs.items():
+                cache_key += key + "=" + str(value)
 
             return cache_key[:-1]
 
@@ -31,14 +34,3 @@ class Cacher:
 
 
 cacher = Cacher()
-
-
-@cacher.cache
-def fib(num: int):
-    """ Measure a fibanacci number."""
-    my_fib = [0, 1]
-
-    for i in range(num - 1):
-        my_fib = [my_fib[1], my_fib[0] + my_fib[1]]
-
-    return my_fib[1]

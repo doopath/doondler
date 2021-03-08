@@ -15,8 +15,6 @@ class ConfigPrototype:
         said "y" to a main question and wants to type its value and default value
         of a parameter that be use if user answered "n" to a main question.
 
-        There is docs:
-
         Attributes
         ----------
         default: dict
@@ -40,7 +38,7 @@ class ConfigPrototype:
             "home_dir": get_path("home"),
             "city": "moscow",
             "handler": yuigahama.Handler,
-            "package_manager": DefaultManager().get_default_manager().name
+            "package_manager": DefaultManager().get_default_manager(ask_if_not_found=False).name
         }
         self.username = {
             "value": "",
@@ -57,19 +55,20 @@ class ConfigPrototype:
         self.city = {
             "value": "",
             "main_question": f"Do you want to change your home dir or keep default={self.default['city']}?",
-            "confirm_question": "Ok, then enter a path",
+            "confirm_question": "Ok, so enter your city like <los-angeles> or <nizhny-novgorod>",
             "default": self.default["city"]
         }
         self.handler = {
             "value": "",
             "main_question": f"Do you want to change your home dir or keep default={self.default['handler'].name}?",
-            "confirm_question": "Ok, then enter a path",
+            "confirm_question": "Ok, then enter a handler's name",
             "default": self.default["handler"].name
         }
         self.package_manager = {
             "value": "",
             "main_question": f"Do you want to change your package manager or keep default={self.default['package_manager']}?",
-            "confirm_question": "Ok, then enter a path",
+            "confirm_question": "Ok, then enter your package manager",
             "default": self.default["package_manager"]
         }
+
         del self.__dict__["default"]

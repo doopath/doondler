@@ -2,7 +2,7 @@
 from time import time
 
 
-def timeit(func: callable):
+def timeit(func):
     """ Print executing time spent. """
 
     def inner_wrapper(*args, **kwargs):
