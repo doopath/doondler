@@ -8,26 +8,27 @@ from modules.sea_battle.main import ships, pg
 
 class RenderHandler:
     """
-        A class that handles the game rendering.
-        Of course the project does not support the rendering like separated window or
-        something like that and anything will be rendered in terminal. But if you need to
+    A class that handles the game rendering.
+    Of course the project does not support the rendering like separated window or
+    something like that and anything will be rendered in terminal.
 
-        Attributes
-        ----------
-        user_playground: Playground
-            The user's gaming playground.
-            Should be formatted with format() method at initialization.
+    ...
 
-        enemy_playground: Playground
-            The enemy's gaming playground.
-            Should be formatted with format() method at initialization.
+    Attributes
+    ----------
+    user_playground: Playground
+        The user's gaming playground.
+        Should be formatted with format() method at initialization.
+    enemy_playground: Playground
+        The enemy's gaming playground.
+        Should be formatted with format() method at initialization.
 
-        Methods
-        -------
-        render(): void (IO)
-            Returns a string that contains two playgrounds and their coordinates.
-        format_playgrounds(): void
-            Format using playgrounds (enemy's and user's ones).
+    Methods
+    -------
+    render(): void (IO)
+        Returns a string that contains two playgrounds and their coordinates.
+    format_playgrounds(): void
+        Format using playgrounds (enemy's and user's ones).
     """
 
     def __init__(self, user_playground: Playground, enemy_playground: Playground):
