@@ -96,6 +96,7 @@ class Config(ConfigPrototype):
         self.user = {}
         self.main_path = get_path("config")
         self.copy_path = get_path("config-copy")
+        logger.log("Created an instance of the modules.config.Config class")
 
     def _create_logfile(self):
         logfile = open(get_path("logs"), "w+")
@@ -107,6 +108,9 @@ class Config(ConfigPrototype):
         self.city["value"] = ask_param(self.city)
         self.handler["value"] = take_handler(self.handler)
         self.package_manager["value"] = ask_param(self.package_manager)
+
+        logger.log("Config params (username, home_dir, city, etc...) were set at the "
+                   "modules.config.Config._set_params method.")
 
     def _create_doondlerc(self):
         try:
@@ -121,6 +125,8 @@ class Config(ConfigPrototype):
                 doondlerc.write(f"{field} = {value}\n")
 
             doondlerc.close()
+            logger.log("Config file (doondlerc) was successfully created at the "
+                       "modules.config.Config._create_doondlerc method.")
 
         except InitializationError as error:
             logger.log(error)
@@ -158,6 +164,8 @@ class Config(ConfigPrototype):
 
             for option in options:
                 to_dos[option]()
+
+            logger.log("Config params were reassigned.")
 
         except AssertionError as error:
             logger.log(error)
@@ -227,6 +235,8 @@ class Config(ConfigPrototype):
     def make(self, remake=False):
         """ Make a config file (~/.doondlerc). """
         if remake:
+            logger.log("Starting reinitialization process at the modules.config.Config"
+                       ".make method.")
             self._reinit()
             self._remove_copy()
             exit()
@@ -239,6 +249,8 @@ class Config(ConfigPrototype):
         self._create_doondlerc()
 
         print("\n☑ You have successfully initialized!")
+        logger.log("The user has passed the initialization successfully at the "
+                   "modules.config.Config.make method.")
         exit()
 
     def remove(self):
@@ -247,6 +259,8 @@ class Config(ConfigPrototype):
         assert is_config_exists, "You cannot remove file that not exists!"
 
         os.remove(self.main_path)
+        logger.log("The config has been removed successfully at the modules.config"
+                   ".Config.remove method.")
 
     def remake(self):
         """ Remake a configuration file. """
@@ -263,4 +277,6 @@ class Config(ConfigPrototype):
             self.make(remake=True)
         else:
             print("Goodbye! But, anyway, try to init later! 🖐")
+            logger.log("Remake prccess has been interrupted at the modules.config.Config"
+                       ".remake method.")
             exit()

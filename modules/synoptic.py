@@ -74,12 +74,14 @@ class Synoptic:
         self.city = ConfigReader(get_path("config")).read()["city"]
         self.api_url = f"https://yandex.com/pogoda/{self.city}"
         self.headers = {'User-Agent': UserAgent().chrome}
+        logger.log("An instance of the modules.synoptic.Synoptic class was made.")
 
     def _parse_content(self):
         try:
             html = requests.get(self.api_url, headers=self.headers)
             assert html.status_code == 200, f"A city {self.city} does not exists in YandexPogoda service!"
 
+            logger.log("Html content was parsed successfully at method modules.synoptic.Synoptic._parse_content.")
             return html.text
 
         except AssertionError as error:
@@ -111,7 +113,7 @@ class Synoptic:
             logger.set_traceback_showing_mode(False)
             logger.log(error)
             logger.log(Warning(
-                "It seems to be a problem. I guess there is something wrong with a "
+                "It seems like a problem. I guess there is something wrong with a "
                 "server. Please, wait and try again a little bit later.\n"
                 "Also, you probably were banned by YandexPogoda service.\n"
                 "Server said: %s" % gotten_message))
@@ -121,7 +123,3 @@ class Synoptic:
         """ Get current weather in set in the configuration file city. """
         screen_wrapper = ScreenWrapper(self._take_info())
         screen_wrapper.render()
-
-
-if __name__ == "__main__":
-    print(Synoptic().get_weather())

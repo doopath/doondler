@@ -6,6 +6,7 @@
 import os
 
 from sys import exit
+from modules.logger import logger
 
 
 class PerformanceHandler:
@@ -28,6 +29,7 @@ class PerformanceHandler:
     def __init__(self):
         with open("/sys/devices/system/cpu/cpu1/cpufreq/scaling_governor") as file:
             self.performance_mode = file.read()
+        logger.log("Created an instance of the modules.performance_handler.PerformanceHandler class.")
 
     def boost(self):
         """ Boost machine performance. """

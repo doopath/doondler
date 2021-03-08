@@ -29,6 +29,7 @@ class ConfigWriter:
     def __init__(self, path=get_path("config")):
         self.path = path
         self.config_reader = ConfigReader(self.path)
+        logger.log("Created an instance of the modules.config_writer.ConfigWriter class.")
 
     def _create_config_item(self, key, value):
         try:
@@ -86,6 +87,8 @@ class ConfigWriter:
             self._write_items_to_config(config, items or {name: value})
             config.close()
 
+            logger.log("The param(s) ha(s/ve) been written to the config.")
+
         except AssertionError as error:
             logger.log(error)
             sys.exit()
@@ -114,12 +117,9 @@ class ConfigWriter:
             self._write_items_to_config(config, config_content or {})
             config.close()
 
+            logger.log("The param(s) ha(s/ve) been erased from the config.")
+
         except AssertionError as e:
             config_writer.write(items=config_backup)
             logger.log(e)
             sys.exit()
-
-
-if __name__ == "__main__":
-    config_writer = ConfigWriter("/home/doopath/.doondlerc")
-    config_writer.erase("email")

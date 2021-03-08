@@ -37,15 +37,15 @@ class Logger:
         Set a mode (True or False) for showing a traceback.
     """
 
-    def __init__(self, log_path: str = get_path("logs"), log_level: int = 2, enable_traceback: bool = True):
+    def __init__(self, log_path: str = get_path("logs")):
         self.log_path = log_path
-        self.log_level = log_level
-        self.enable_traceback = enable_traceback
+        self.log_level = 2
+        self.enable_traceback = True
 
     def _get_log_date(self):
         return str(datetime.datetime.now())[:19]
 
-    def _write_log(self, log):
+    def _write_log(self, log: str):
         current_time = self._get_log_date()
 
         log_file = open(self.log_path, "a")
@@ -53,6 +53,8 @@ class Logger:
         log_file.close()
 
     def _log_error(self, error: Exception):
+        error = "DOONDLER:ERROR: " + str(error)
+
         self._write_log(error)
         print(f"\n{red}{error}{no_color}")
 
@@ -61,11 +63,14 @@ class Logger:
 
     def _log_warning(self, warning: Warning):
         if self.log_level >= 2:
+            warning = "DOONDLER:WARNING: " + str(warning)
+
             self._write_log(warning)
             print(f"{yellow}{warning}{no_color}")
 
     def _log_notice(self, notice: str):
         if self.log_level == 3:
+            notice = "DOONLER:NOTICE: " + notice
             self._write_log(notice)
             print(f"{white}{notice}{no_color}")
 
@@ -78,7 +83,9 @@ class Logger:
         elif isinstance(error, Exception):
             self._log_error(error)
         else:
-            raise TypeError("You gave something incorrect to the log method!")
+            raise TypeError("You gave something incorrect to the log method!"
+                            "Logger supports only (str | Warning | Exception) type, but "
+                            f"not {type(error)}!")
 
     def set_log_level(self, new_log_level: int):
         """ Set new log level. """

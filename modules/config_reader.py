@@ -11,8 +11,9 @@ class ConfigReader:
     """ Config reader module. """
     def __init__(self, path=None):
         self.path = path or get_path("config")
+        logger.log("Created an instance of the modules.config_reader.ConfigReader class.")
 
-    def _get_config_content(self):
+    def _get_config_content(self) -> str:
         try:
             if not os.path.isfile(self.path):
                 raise InitializationError("Oops! Config reader cannot find config file!")
@@ -27,17 +28,17 @@ class ConfigReader:
             logger.log(error)
             sys.exit()
 
-    def _map_config_items(self, config_item):
+    def _map_config_items(self, config_item: str) -> str:
         config_item = config_item.strip()
 
         if config_item != "":
             return config_item
 
-    def _filter_config_items(self, config_item):
+    def _filter_config_items(self, config_item) -> bool:
         if config_item is not None:
             return True
 
-    def _create_config_items(self, config_content):
+    def _create_config_items(self, config_content: str) -> list:
         try:
             assert config_content != "", "Config reader said your config is empty!"
 
@@ -60,7 +61,7 @@ class ConfigReader:
 
         return params
 
-    def _create_config(self, config_items):
+    def _create_config(self, config_items: list) -> dict:
         config_items = list(map(self._create_config_item, config_items))
         config = {}
 
@@ -75,6 +76,7 @@ class ConfigReader:
         config_items = self._create_config_items(config_content)
         config = self._create_config(config_items)
 
+        logger.log("The config has been read successfully.")
         return config
 
 
