@@ -91,7 +91,6 @@ class Synoptic:
     def _take_info(self):
         try:
             soup = BeautifulSoup(self._parse_content(), "lxml")
-            gotten_message = soup.find("p", class_=["text-wrapper", "text-wrapper_info"]).get_text()
             title = soup.select("div.header-title.header-title_in-fact")[0]
             subtitle = soup.select("div.fact__time-yesterday-wrap")[0]
 
@@ -110,13 +109,16 @@ class Synoptic:
             }
 
         except IndexError as error:
+            message = soup.find("p", class_=["text-wrapper", "text-wrapper_info"])
+            message = message.get_text() if bool(message) else "*He hasn't said something*"
+
             logger.set_traceback_showing_mode(False)
             logger.log(error)
             logger.log(Warning(
                 "It seems like a problem. I guess there is something wrong with a "
                 "server. Please, wait and try again a little bit later.\n"
                 "Also, you probably were banned by YandexPogoda service.\n"
-                "Server said: %s" % gotten_message))
+                "Server said: %s" % message))
             exit()
 
     def get_weather(self):

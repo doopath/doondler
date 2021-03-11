@@ -280,3 +280,4 @@ class Config(ConfigPrototype):
             logger.log("Remake prccess has been interrupted at the modules.config.Config"
                        ".remake method.")
             exit()
+

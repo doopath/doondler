@@ -53,9 +53,9 @@ class Logger:
         log_file.close()
 
     def _log_error(self, error: Exception):
-        error = "DOONDLER:ERROR: " + str(error)
+        message: str = "DOONDLER:ERROR: " + str(error)
 
-        self._write_log(error)
+        self._write_log(message)
         print(f"\n{red}{error}{no_color}")
 
         if self.enable_traceback:
@@ -63,9 +63,9 @@ class Logger:
 
     def _log_warning(self, warning: Warning):
         if self.log_level >= 2:
-            warning = "DOONDLER:WARNING: " + str(warning)
+            message: str = "DOONDLER:WARNING: " + str(warning)
 
-            self._write_log(warning)
+            self._write_log(message)
             print(f"{yellow}{warning}{no_color}")
 
     def _log_notice(self, notice: str):
